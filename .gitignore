@@ -18,5 +18,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-phpstan-baseline.neon
+#phpstan-baseline.neon
 build

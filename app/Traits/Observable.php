@@ -1,21 +1,23 @@
-<?php declare(strict_types=1);
+<?php
 
-    namespace App\Traits;
+declare(strict_types=1);
 
-    use App\Exceptions\ObserverException;
-    use Illuminate\Support\Facades\Log;
+namespace App\Traits;
 
-    trait Observable
+use App\Exceptions\ObserverException;
+use Illuminate\Support\Facades\Log;
+
+trait Observable
+{
+    public static function bootObservable(): void
     {
-        public static function bootObservable(): void
-        {
-            $observer = '\\App\\Observers\\' . class_basename(get_called_class()) . 'Observer';
+        $observer = '\\App\\Observers\\'.class_basename(get_called_class()).'Observer';
 
-            try {
-                (new static)->registerObserver($observer);
-            } catch (ObserverException $e) {
-                Log::alert($e->getMessage());
-            }
-
+        try {
+            (new static)->registerObserver($observer);
+        } catch (ObserverException $e) {
+            Log::alert($e->getMessage());
         }
+
     }
+}

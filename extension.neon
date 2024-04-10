@@ -1,0 +1,15 @@
+parameters:
+    universalObjectCratesClasses:
+        - Illuminate\Http\Request
+        - Illuminate\Support\Optional
+    earlyTerminatingFunctionCalls:
+        - abort
+        - dd
+    excludePaths:
+        - *.blade.php
+    mixinExcludeClasses:
+        - Eloquent
+    bootstrapFiles:
+        - bootstrap.php
+    checkOctaneCompatibility: false
+    noEnvCallsOutsideOfConfig: false

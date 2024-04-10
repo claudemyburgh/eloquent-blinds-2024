@@ -1,17 +1,13 @@
 <?php
 
-    namespace App\Traits;
+namespace App\Traits;
 
-    use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
-    trait Live
+trait Live
+{
+    public function scopeLive(Builder $builder): Builder
     {
-        /**
-         * @param Builder $builder
-         * @return Builder
-         */
-        public function scopeLive(Builder $builder): Builder
-        {
-            return $builder->where('live', true);
-        }
+        return $builder->where('live', true);
     }
+}

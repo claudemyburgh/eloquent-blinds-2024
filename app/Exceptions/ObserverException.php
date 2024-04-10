@@ -1,10 +1,9 @@
 <?php
 
-    namespace App\Exceptions;
+namespace App\Exceptions;
 
-    use Exception;
+use Exception;
 
-    class ObserverException extends Exception
-    {
-
-    }
+class ObserverException extends Exception
+{
+}

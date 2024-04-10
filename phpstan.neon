@@ -1,0 +1,11 @@
+
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 3
+    paths:
+        - app
+    tmpDir: build/phpstan
+    excludePaths:
+        - app/Http/Controllers/Auth

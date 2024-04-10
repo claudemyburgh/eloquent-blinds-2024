@@ -1,16 +1,16 @@
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
-    use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-    class ImageDestroyController extends Controller
+class ImageDestroyController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke($uuid): void
     {
-        /**
-         * Handle the incoming request.
-         */
-        public function __invoke($uuid): void
-        {
-            Media::findByUuid($uuid)->delete();
-        }
+        Media::findByUuid($uuid)->delete();
     }
+}

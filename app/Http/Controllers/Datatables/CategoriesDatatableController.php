@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\Datatables;
 
     use App\Http\Requests\Categories\StoreCategoryRequest;
+    use App\Http\Requests\Categories\UpdateCategoryRequest;
     use App\Models\Category;
     use Designbycode\EloquentDatatable\EloquentDatatableController;
     use Exception;
@@ -72,17 +73,21 @@
         /**
          * Show the form for editing the specified resource.
          */
-        public function edit(string $id)
+        public function edit(string $id): Response
         {
-            // TODO: return view edit
+            $category = Category::with('media')->find($id);
+            return Inertia::render('Dashboard/Categories/Edit', compact('category'));
         }
 
         /**
          * Update the specified resource in storage.
          */
-        public function update(Request $request, string $id): void
+        public function update(UpdateCategoryRequest $request, string $id): void
         {
-            // TODO: Model update
+            Cache::forget('categories-menu');
+            Cache::forget('categories-list');
+            Category::findOrFail($id)
+                ->update($request->validated());
         }
 
         /**
@@ -91,6 +96,28 @@
         public function destroy(string $ids): void
         {
             $this->itemsDelete($ids);
+        }
+
+        public function upload(Request $request): void
+        {
+            $request->validate([
+                'image.*' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10000',
+            ]);
+
+            if ($request->hasFile('image')) {
+                $category = Category::find($request->id);
+                $category->addMultipleMediaFromRequest(['image'])
+                    ->each(function ($fileAdder) {
+                        $fileAdder->toMediaCollection('default');
+                    });
+            }
+
+
+//            if ($request->hasFile('image')) {
+//                $category = Category::find($request->id);
+//                $category->addMedia($request->image)
+//                    ->toMediaCollection('default');
+//            }
         }
 
 

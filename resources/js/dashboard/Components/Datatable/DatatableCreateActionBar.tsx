@@ -6,6 +6,7 @@ import PrimaryButton from "@/dashboard/Components/Buttons/PrimaryButton";
 import slugify from "slugify";
 import {InputError, InputLabel, SelectCategory, TextInput} from "@/dashboard/Components/FormPartials";
 import Modal from "@/dashboard/Components/Modal";
+import {Panel} from "@/dashboard/Components/Panel";
 
 
 const DatatableCreateActionBar = ({categories}: any) => {
@@ -68,7 +69,8 @@ const DatatableCreateActionBar = ({categories}: any) => {
   return (
     <>
       <Modal show={isOpen} onClose={closeModal} maxWidth={`lg`} closeable={true}>
-        <div className={`p-6`}>
+        <Panel>
+          <Panel.Header heading={`Create a new ${name_singular}`}/>
           <form onSubmit={handleSubmit} className="mt-4 space-y-6">
             {columns.quick_create.map((column) => (
               <div key={slugify(column)}>
@@ -85,10 +87,11 @@ const DatatableCreateActionBar = ({categories}: any) => {
               <PrimaryButton type={`submit`}>Create</PrimaryButton>
             </div>
           </form>
-        </div>
+        </Panel>
+
       </Modal>
 
-      <div className={`p-4 rounded my-4 md:my-6 bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-800 text-gray-700 dark:text-gray-200`}>
+      <div className={`panel`}>
         <div className="flex justify-between">
           <h1 className={`capitalize font-semibold text-2xl`}>{name}</h1>
           {allow.creation && (

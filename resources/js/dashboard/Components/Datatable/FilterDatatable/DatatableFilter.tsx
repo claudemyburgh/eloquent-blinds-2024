@@ -13,7 +13,7 @@ const DatatableFilter = () => {
   }
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-800 text-gray-700 dark:text-gray-200 p-4 rounded my-4 md:my-6 space-y-4">
+    <div className="panel">
       <BackendSearch/>
       <div className={`grid grid-cols-12 gap-4 md:gap-x-6 lg:gap-x-8`}>
         <div className="col-span-12 md:col-span-8 lg:col-span-10">

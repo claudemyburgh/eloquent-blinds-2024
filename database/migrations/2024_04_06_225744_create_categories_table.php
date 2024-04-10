@@ -19,7 +19,7 @@
                 $table->text('excerpt')->nullable();
                 $table->text('body')->nullable();
                 $table->boolean('popular')->default(false);
-                $table->boolean('live')->default(true);
+                $table->boolean('live')->default(false);
                 $table->softDeletes();
                 $table->timestamps();
             });

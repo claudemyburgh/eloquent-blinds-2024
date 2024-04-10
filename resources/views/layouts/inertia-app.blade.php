@@ -17,7 +17,7 @@
     @vite(['resources/js/dashboard-app.tsx', "resources/js/dashboard/Pages/{$page['component']}.tsx"])
     @inertiaHead
 </head>
-<body class="font-sans antialiased bg-gray-300 text-gray-800 dark:bg-gray-950 dark:text-gray-200">
+<body class="font-sans antialiased bg-gray-300 text-gray-800 dark:bg-gray-950 dark:text-gray-200 accent-primary-300 md:accent-primary-500">
 @inertia
 </body>
 </html>

@@ -2,17 +2,22 @@ import React from 'react';
 import {Link} from "@inertiajs/react";
 import {twMerge} from "tailwind-merge";
 import {ChartBarIcon, HomeIcon, RectangleStackIcon, SwatchIcon} from '@heroicons/react/24/solid'
-
+import lightLogo from "../../../../img/brand/light-long-logo.svg"
 
 const linkClasses = 'flex items-center space-x-2 hover:bg-primary-500 focus:bg-primary-500 hover:text-primary-950 focus:text-primary-950 p-2 rounded'
 const activeLinkClass = 'bg-primary-500 bg-primary-500 text-primary-950 text-primary-950'
 
 function Navigation({user}: any) {
   return (
-    <nav className={`bg-gray-900/20 w-64 border-r border-gray-950/50 fixed inset-y-0  flex flex-col justify-between`}>
-      <div className={`w-full p-6`}>
-        <Link className={`text-2xl font-bold`} href={route('dashboard.index')}>Eloquent <span className={`text-primary-500`}>Blinds</span></Link>
-        <div className="space-y-4 my-6 pt-6 border-t border-primary-500/10 font-semibold">
+    <nav className={`bg-gray-900/20 w-64 border-r border-primary-500/10 fixed inset-y-0  flex flex-col justify-between`}>
+      <div className={`w-full`}>
+        <div className={`border-b border-primary-500/10 h-16 px-4 flex justify-center`}>
+          <Link className={`flex items-center`} href={route('dashboard.index')}>
+            <span className={`sr-only`}>Eloquent Blinds</span>
+            <img className={`w-full h-10 block`} aria-hidden src={lightLogo} alt="Eloquent Blinds"/>
+          </Link>
+        </div>
+        <div className="space-y-4 my-6 px-4 font-semibold">
           <Link className={twMerge(linkClasses, route().current('dashboard.index') && activeLinkClass)} href={route('dashboard.index')}>
             <HomeIcon className="size-4"/>
             <span>Dashboard</span>
@@ -31,7 +36,7 @@ function Navigation({user}: any) {
           </Link>
         </div>
       </div>
-      <div className={`bg-gray-950/10 border-t border-b border-gray-950 text-primary-500 font-semibold px-6 py-3 flex items-center`}>
+      <div className={`bg-gray-950/10 border-t border-b border-primary-500/10 text-primary-500 font-semibold px-6 py-3 flex items-center`}>
         <img
           className="inline-block size-10 rounded-md mr-2"
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"

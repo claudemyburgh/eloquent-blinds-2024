@@ -7,7 +7,7 @@ interface Props {
 
 const SelectCategory = ({categories, ...resProps}: Props & any) => {
   return (
-    <SelectInput {...resProps} className="mt-1 block w-full text-gray-600">
+    <SelectInput {...resProps} className="mt-1 block w-full text-gray-600 accent-primary-500 focus:accent-primary-500">
       <option value="">None</option>
       {categories &&
         (categories as unknown as any[]).map((cat) => (

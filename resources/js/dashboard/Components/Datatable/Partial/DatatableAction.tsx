@@ -2,6 +2,8 @@ import React, {FC, useState} from "react"
 import {Link, usePage} from "@inertiajs/react"
 import {cleanUrl} from "@/lib/helpers"
 import {CheckIcon, EyeIcon, PencilSquareIcon, TrashIcon, XMarkIcon} from "@heroicons/react/24/solid";
+import toast from "react-hot-toast";
+import {ToastItem} from "@/dashboard/Components/Alerts";
 
 const DatatableAction: FC<{ id: any; deletion: boolean; name: string }> = ({id, deletion, name}) => {
   const {url} = usePage()
@@ -35,8 +37,7 @@ const DatatableAction: FC<{ id: any; deletion: boolean; name: string }> = ({id, 
             preserveState={false}
             method={`delete`}
             onSuccess={() => {
-
-              // toast.custom((t) => <ToastItem t={t} type={`success`} title={`Success`} message={`Deleted successfully`} icon={`check`}/>)
+              toast.custom((t) => <ToastItem t={t} type={`success`} title={`Success`} message={`Deleted successfully`} icon={`check`}/>)
             }}
             href={`${cleanUrl(url)}/${id}`}
             as={`button`}

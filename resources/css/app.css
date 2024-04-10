@@ -2,8 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+
+}
+
 @layer components {
     .wrapper {
         @apply w-full max-w-7xl px-4 md:px-6 lg:px-8 mx-auto;
+    }
+
+    .panel {
+        @apply bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-800 text-gray-700 dark:text-gray-200 p-4 rounded my-4 md:my-6 space-y-4;
+    }
+
+    .panel-heading {
+        @apply text-lg font-medium text-gray-900 dark:text-gray-100;
+    }
+
+    .panel-text {
+        @apply mt-1 text-sm text-gray-600 dark:text-gray-400;
     }
 }

@@ -23,7 +23,10 @@
         public function rules(): array
         {
             return [
-                'title' => 'required',
+                'title' => [
+                    'required',
+                    'unique:categories'
+                ],
             ];
         }
     }

@@ -5,13 +5,14 @@ import {CheckIcon, EyeIcon, PencilSquareIcon, TrashIcon, XMarkIcon} from "@heroi
 import toast from "react-hot-toast";
 import {ToastItem} from "@/dashboard/Components/Alerts";
 
-const DatatableAction: FC<{ id: any; deletion: boolean; name: string }> = ({id, deletion, name}) => {
+const DatatableAction: FC<{ id: any; deletion: boolean; name: string, editing: boolean }> = ({id, deletion, name, editing}) => {
   const {url} = usePage()
 
   const [open, setOpen] = useState<boolean>(false)
 
   return (
     <div className={`flex space-x-5 relative items-center`}>
+
       {!open ? (
         <>
           {deletion && (
@@ -25,9 +26,13 @@ const DatatableAction: FC<{ id: any; deletion: boolean; name: string }> = ({id, 
               <EyeIcon className={`w-5 h-5 text-gray-400`}/>
             </Link>
           ) : (
-            <Link type={`button`} href={`${cleanUrl(url)}/${id}/edit`}>
-              <PencilSquareIcon className={`w-5 h-5 text-gray-400`}/>
-            </Link>
+            <>
+              {editing && (
+                <Link type={`button`} href={`${cleanUrl(url)}/${id}/edit`}>
+                  <PencilSquareIcon className={`w-5 h-5 text-gray-400`}/>
+                </Link>
+              )}
+            </>
           )}
         </>
       ) : (
@@ -45,6 +50,7 @@ const DatatableAction: FC<{ id: any; deletion: boolean; name: string }> = ({id, 
           >
             <CheckIcon className={`w-5 h-5`}/>
           </Link>
+
           <button className={`text-red-500 bg-gray-900/75 p-1 rounded`} type={`button`} onClick={(e) => setOpen(!open)}>
             <XMarkIcon className={`w-5 h-5`}/>
           </button>

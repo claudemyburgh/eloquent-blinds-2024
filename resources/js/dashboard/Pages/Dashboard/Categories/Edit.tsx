@@ -3,7 +3,7 @@ import AuthenticatedLayout from "@/dashboard/Layouts/AuthenticatedLayout";
 import {Head} from "@inertiajs/react";
 import React from "react";
 import EditCategoryForm from "@/dashboard/Pages/Dashboard/Categories/Partials/EditCategoryForm";
-import ImageUpload from "@/dashboard/Components/Upload/ImageUpload";
+import {ImageDropzone} from "@/dashboard/Components/Upload/";
 
 
 export default function Index({auth, category}: PageProps) {
@@ -18,7 +18,7 @@ export default function Index({auth, category}: PageProps) {
         <div className="container mx-auto space-y-6 ">
           <div className="panel">
             <h2 className={`panel-heading`}>Category Edit</h2>
-            <ImageUpload model={category} namedRoute={"dashboard.categories.upload"}/>
+            <ImageDropzone model={category} namedRoute={"dashboard.categories.upload"}/>
             <EditCategoryForm/>
           </div>
         </div>

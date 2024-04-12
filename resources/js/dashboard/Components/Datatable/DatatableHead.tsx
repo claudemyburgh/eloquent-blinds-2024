@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {usePage} from "@inertiajs/react";
-import {UsePageDatatableProps} from "@/types/datatable";
+import {UsePageDatatableProps} from "@/types/datatable/datatable";
 import {ArrowIndicator, useDatatable} from "@/dashboard/Components/Datatable";
 import {unSlug} from "@/lib/helpers";
 import {Checkbox} from "@/dashboard/Components/FormPartials";
@@ -9,7 +9,7 @@ const DatatableHead: FC = () => {
   const {data} = usePage<UsePageDatatableProps<any>>().props
   const {order, selected, handleToggleSelectedAll, handleColumnOrder} = useDatatable()
   return (
-    <thead className={`bg-gray-200 dark:bg-gray-950/20 border-b border-gray-400/800 dark:border-gray-900 text-gray-700 dark:text-gray-200`}>
+    <thead className={`bg-gray-200 dark:bg-gray-950/20 border-b border-gray-200 dark:border-gray-900 text-gray-700 dark:text-gray-200`}>
     <tr>
       {data.meta.allow.deletions && (
         <th className={`p-3.5 w-5`}>

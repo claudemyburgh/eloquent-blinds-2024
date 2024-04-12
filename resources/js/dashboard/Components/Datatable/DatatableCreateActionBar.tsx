@@ -1,12 +1,14 @@
 import {useForm, usePage} from "@inertiajs/react";
-import {UsePageDatatableProps} from "@/types/datatable";
+import {UsePageDatatableProps} from "@/types/datatable/datatable";
 import React, {useState} from "react";
 import {slugIt, unSlug} from "@/lib/helpers";
 import PrimaryButton from "@/dashboard/Components/Buttons/PrimaryButton";
 import slugify from "slugify";
-import {InputError, InputLabel, SelectCategory, TextInput} from "@/dashboard/Components/FormPartials";
+import {InputError, InputLabel, SelectCategory, SelectInput, TextInput} from "@/dashboard/Components/FormPartials";
 import Modal from "@/dashboard/Components/Modal";
 import {Panel} from "@/dashboard/Components/Panel";
+import SelectStepCategory from "@/dashboard/Components/FormPartials/SelectStepCategory";
+import {ProductProps} from "@/types/datatable";
 
 
 const DatatableCreateActionBar = ({categories}: any) => {
@@ -16,6 +18,7 @@ const DatatableCreateActionBar = ({categories}: any) => {
       columns,
       database,
     },
+    products_all
   } = usePage<UsePageDatatableProps<any>>().props
 
   const {url} = usePage()
@@ -75,11 +78,24 @@ const DatatableCreateActionBar = ({categories}: any) => {
             {columns.quick_create.map((column) => (
               <div key={slugify(column)}>
                 <InputLabel htmlFor={column} value={unSlug(column)} className={`capitalize`}/>
-                {column === "category_id" ? (
-                  <SelectCategory id="category_id" name={column} categories={categories} defaultValue={data.category_id} onChange={handleFormInput}/>
-                ) : (
-                  <TextInput id={column} name={column} className="mt-1 block w-full" onChange={handleFormInput} value={data[column]}/>
-                )}
+
+                {column === "category_id" ?
+                  (
+                    <SelectStepCategory id="category_id" name={column} categories={categories} defaultValue={data.category_id} onChange={handleFormInput}/>
+                  ) :
+                  column === "product_id" ? (
+                    <SelectInput className={"w-full"} id="product_id" name={column} defaultValue={data.product_id} onChange={handleFormInput}>
+                      <option>Select Product</option>
+                      {
+                        products_all.map((product: ProductProps) => (
+                          <option key={product.id} value={product.id}>{product.title}</option>
+                        ))
+                      }
+                    </SelectInput>
+                  ) : (
+                    <TextInput id={column} name={column} className="mt-1 block w-full" onChange={handleFormInput} value={data[column]}/>
+                  )}
+
                 <InputError className="mt-2" message={errors[column]}/>
               </div>
             ))}

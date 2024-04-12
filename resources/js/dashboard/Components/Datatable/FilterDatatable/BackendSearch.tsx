@@ -1,6 +1,6 @@
 import React from "react";
 import {useForm, usePage} from "@inertiajs/react";
-import {UsePageDatatableProps} from "@/types/datatable";
+import {UsePageDatatableProps} from "@/types/datatable/datatable";
 import {InputLabel, SelectInput, TextInput} from "@/dashboard/Components/FormPartials";
 import {PrimaryButton} from "@/dashboard/Components/Buttons";
 import {unSlug} from "@/lib/helpers";

@@ -1,4 +1,4 @@
-import {UsePageDatatableProps} from "@/types/datatable";
+import {UsePageDatatableProps} from "@/types/datatable/datatable";
 import {usePage} from "@inertiajs/react";
 import {DatatableAction, useDatatable} from "@/dashboard/Components/Datatable";
 import {twMerge} from "tailwind-merge";
@@ -20,7 +20,7 @@ const DatatableBody = () => {
     <tbody className={`divide-y divide-gray-300 dark:divide-gray-900`}>
     {filteredData &&
       filteredData.map((row: any, index: number) => (
-        <tr key={`row-${index}`} className={`odd:bg-gray-100 odd:dark:bg-gray-800`}>
+        <tr key={`row-${index}`} className={`odd:bg-gray-50 odd:dark:bg-gray-800`}>
           {meta.allow.deletions && (
             <td className={`p-3.5 w-5`}>
               <Checkbox id={row.id} onChange={handleSelected} value={row.id} checked={selected.includes(row.id)}/>
@@ -47,7 +47,7 @@ const DatatableBody = () => {
             </td>
           ))}
           <th className={`w-[70px] text-right px-3.5 py-4 text-sm`}>
-            <DatatableAction id={row["id"]} deletion={meta.allow.deletions} name={meta.name}/>
+            <DatatableAction id={row["id"]} editing={meta.allow.editing} deletion={meta.allow.deletions} name={meta.name}/>
           </th>
         </tr>
       ))}

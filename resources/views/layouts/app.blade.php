@@ -16,7 +16,7 @@
     @vite(['resources/js/frontend/app.ts', 'resources/css/app.css'])
 
 </head>
-<body class="font-sans antialiased bg-gray-300 text-gray-800 dark:bg-gray-950 dark:text-gray-200 accent-primary-300 md:accent-primary-500">
+<body class="font-sans antialiased overflow-x-hidden bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 accent-primary-300 md:accent-primary-500">
 {{ $slot }}
 </body>
 </html>

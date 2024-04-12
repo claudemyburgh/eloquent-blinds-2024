@@ -1,7 +1,7 @@
 import {Link, usePage} from "@inertiajs/react"
 import {twMerge} from "tailwind-merge"
 import {Key} from "react";
-import {UsePageDatatableProps} from "@/types/datatable";
+import {UsePageDatatableProps} from "@/types/datatable/datatable";
 import {useDatatable} from "@/dashboard/Components/Datatable";
 
 const DatatablePagination = () => {

@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+    namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Inertia\Response;
+    use App\Http\Controllers\Controller;
+    use App\Models\Client;
+    use Illuminate\Http\Request;
+    use Inertia\Inertia;
+    use Inertia\Response;
 
-class DashboardIndexController extends Controller
-{
-    public function __invoke(Request $request): Response
+    class DashboardIndexController extends Controller
     {
-        return Inertia::render('Dashboard/Index');
+        public function __invoke(Request $request): Response
+        {
+            return Inertia::render('Dashboard/Index', [
+                'clients' => Client::simplePaginate(5)
+            ]);
+        }
     }
-}

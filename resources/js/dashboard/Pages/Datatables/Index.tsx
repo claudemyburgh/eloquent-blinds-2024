@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/dashboard/Layouts/AuthenticatedLayout";
 import {Head} from "@inertiajs/react";
 import {PageProps} from "@/types";
-import {DatatableProps} from "@/types/datatable";
+import {DatatableProps} from "@/types/datatable/datatable";
 import "@/lib/prototypes"
 import {DatatableMainComponent} from "@/dashboard/Components/Datatable";
 import React from "react";

@@ -1,133 +1,134 @@
 <?php
 
-namespace App\Http\Controllers\Datatables;
+    namespace App\Http\Controllers\Datatables;
 
-use App\Http\Requests\Categories\StoreCategoryRequest;
-use App\Http\Requests\Categories\UpdateCategoryRequest;
-use App\Models\Category;
-use Designbycode\EloquentDatatable\EloquentDatatableController;
-use Exception;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Inertia\Inertia;
-use Inertia\Response;
+    use App\Http\Requests\Categories\StoreCategoryRequest;
+    use App\Http\Requests\Categories\UpdateCategoryRequest;
+    use App\Models\Category;
+    use App\Models\Gallery;
+    use Designbycode\EloquentDatatable\EloquentDatatableController;
+    use Exception;
+    use Illuminate\Database\Eloquent\Builder;
+    use Illuminate\Http\RedirectResponse;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Cache;
+    use Inertia\Inertia;
+    use Inertia\Response;
 
-class CategoriesDatatableController extends EloquentDatatableController
-{
-    protected bool $allowDeletion = true;
-
-    protected bool $allowCreation = true;
-
-    protected bool $createUsingDialog = false;
-
-    protected bool $allowSearching = true;
-
-    protected int $defaultLimit = 10;
-
-    protected string $sortDirection = 'desc';
-
-    public function __constructor(): void
+    class CategoriesDatatableController extends EloquentDatatableController
     {
-        parent::__construct();
-        $this->middleware(['auth', 'verified']);
-    }
+        protected bool $allowDeletion = true;
 
-    /**
-     * A description of the entire PHP function.
-     */
-    public function builder(): Builder
-    {
-        return Category::query();
-    }
+        protected bool $allowCreation = true;
 
-    /**
-     * A description of the entire PHP function.
-     *
-     * @param  Request  $request  description
-     * @return array
-     *
-     * @throws Exception
-     */
-    public function index(Request $request): Response
-    {
-        return Inertia::render('Datatables/Index', $this->getResponse($request));
-    }
+        protected bool $createUsingDialog = false;
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCategoryRequest $request)
-    {
-        Cache::forget('categories-menu');
-        $category = Category::create($request->validated());
+        protected bool $allowSearching = true;
 
-        return to_route('dashboard.categories.edit', $category);
-    }
+        protected int $defaultLimit = 10;
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): Response
-    {
-        $category = Category::with('media')->find($id);
+        protected string $sortDirection = 'desc';
 
-        return Inertia::render('Dashboard/Categories/Edit', compact('category'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCategoryRequest $request, string $id): void
-    {
-        Cache::forget('categories-menu');
-        Cache::forget('categories-list');
-        Category::findOrFail($id)
-            ->update($request->validated());
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $ids): void
-    {
-        $this->itemsDelete($ids);
-    }
-
-    public function upload(Request $request): void
-    {
-        $request->validate([
-            'image.*' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10000',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $category = Category::find($request->id);
-            $category->addMultipleMediaFromRequest(['image'])
-                ->each(function ($fileAdder) {
-                    $fileAdder->toMediaCollection('default');
-                });
+        public function __constructor(): void
+        {
+            parent::__construct();
+            $this->middleware(['auth', 'verified']);
         }
 
-        //            if ($request->hasFile('image')) {
-        //                $category = Category::find($request->id);
-        //                $category->addMedia($request->image)
-        //                    ->toMediaCollection('default');
-        //            }
-    }
+        /**
+         * A description of the entire PHP function.
+         */
+        public function builder(): Builder
+        {
+            return Category::query();
+        }
 
-    /**
-     * Get the columns for the quick create form.
-     */
-    protected function getQuickCreateColumns(): array
-    {
-        return ['title'];
-    }
+        /**
+         * A description of the entire PHP function.
+         *
+         * @param Request $request description
+         * @return Response
+         *
+         * @throws Exception
+         */
+        public function index(Request $request): Response
+        {
+            return Inertia::render('Datatables/Index', $this->getResponse($request));
+        }
 
-    /**
-     * Retrieve displayable column names.
-     */
-    protected function getDisplayableColumnNames(): array
-    {
-        return ['id', 'title', 'slug', 'popular', 'live'];
+        /**
+         * Store a newly created resource in storage.
+         */
+        public function store(StoreCategoryRequest $request): RedirectResponse
+        {
+            Cache::forget('categories-menu');
+            $category = Category::create($request->validated());
+            return to_route('dashboard.categories.edit', $category);
+        }
+
+        /**
+         * Show the form for editing the specified resource.
+         */
+        public function edit(string $id): Response
+        {
+            return Inertia::render('Dashboard/Categories/Edit', [
+                'category' => Category::with('media', 'galleries')->find($id),
+                'galleries' => Gallery::get()
+            ]);
+        }
+
+        /**
+         * Update the specified resource in storage.
+         */
+        public function update(UpdateCategoryRequest $request, string $id): void
+        {
+            Cache::forget('categories-menu');
+            Cache::forget('categories-list');
+            $category = Category::findOrFail($id);
+            $category->update($request->except(['gallery']));
+            if ($request['gallery']) {
+                $category->galleries()->sync($request->only(['gallery']));
+            } else {
+                $category->galleries()->detach();
+            }
+        }
+
+        /**
+         * Remove the specified resource from storage.
+         */
+        public function destroy(string $ids): void
+        {
+            $this->itemsDelete($ids);
+        }
+
+        public function upload(Request $request): void
+        {
+            $request->validate([
+                'image.*' => 'image|mimes:jpeg,jpg,png,gif,webp|max:10000',
+            ]);
+
+            if ($request->hasFile('image')) {
+                $category = Category::find($request->id);
+                $category->addMultipleMediaFromRequest(['image'])
+                    ->each(function ($fileAdder) {
+                        $fileAdder->toMediaCollection('default');
+                    });
+            }
+        }
+
+        /**
+         * Get the columns for the quick create form.
+         */
+        protected function getQuickCreateColumns(): array
+        {
+            return ['title'];
+        }
+
+        /**
+         * Retrieve displayable column names.
+         */
+        protected function getDisplayableColumnNames(): array
+        {
+            return ['id', 'title', 'slug', 'popular', 'live'];
+        }
     }
-}

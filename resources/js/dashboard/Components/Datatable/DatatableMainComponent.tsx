@@ -1,4 +1,4 @@
-import {UsePageDatatableProps} from "@/types/datatable";
+import {UsePageDatatableProps} from "@/types/datatable/datatable";
 import React, {FC, useEffect, useState} from "react";
 import {Datatable, DatatableBody, DatatableCreateActionBar, DatatableHead, DatatablePagination, useDatatable} from "@/dashboard/Components/Datatable";
 import {DangerButton, PrimaryButton, SecondaryButton} from "@/dashboard/Components/Buttons";
@@ -10,8 +10,9 @@ import toast from "react-hot-toast";
 import {cleanUrl} from "@/lib/helpers";
 import {DatatableFilter} from "./FilterDatatable";
 
-const DatatableMainComponent: FC<UsePageDatatableProps<any> & any> = ({data, categories_all}) => {
+const DatatableMainComponent: FC<UsePageDatatableProps<any> & any> = ({data}) => {
   const {url} = usePage();
+  const {categories_all, products_all} = usePage().props;
 
   const [confirm, setConfirm] = useState<boolean>(false);
 
@@ -116,7 +117,7 @@ const DatatableMainComponent: FC<UsePageDatatableProps<any> & any> = ({data, cat
         <DatatableBody/>
       </Datatable>
       <DatatablePagination/>
-      {JSON.stringify(categories_all)}
+
     </div>
   )
 }

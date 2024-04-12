@@ -5,29 +5,14 @@ import {PageProps} from "@/types"
 import {slugIt} from "@/lib/helpers"
 import toast from "react-hot-toast"
 import {ToastItem} from "@/dashboard/Components/Alerts"
+import {CategoriesAllProps, CategoryProps, CounterProps, GalleryProps} from "@/types/datatable";
+import filterObjectsById from "@/lib/filter-object";
 
-interface CategoryProps {
-  category: {
-    title: string
-    slug: string
-    parent_id: string
-    excerpt: string
-    body: string
-    live: string
-    popular: string
-  }
-}
-
-interface CountProps {
-  slug: number
-  body: number
-  excerpt: number
-}
 
 const EditCategoryForm = () => {
-  const {category, categories_all} = usePage<CategoryProps & PageProps>().props
+  const {category, categories_all, galleries} = usePage<CategoryProps & CategoriesAllProps & GalleryProps & PageProps>().props
 
-  const [count, setCount] = useState<CountProps>({
+  const [count, setCount] = useState<CounterProps>({
     body: category.body?.length,
     slug: category.slug?.length,
     excerpt: category.excerpt?.length,
@@ -41,7 +26,10 @@ const EditCategoryForm = () => {
     excerpt: category.excerpt || "",
     live: category.live,
     popular: category.popular,
+    //@ts-expect-error
+    gallery: category["galleries"][0]?.id || "",
   })
+
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault()
@@ -74,7 +62,6 @@ const EditCategoryForm = () => {
       <div>
         <InputLabel htmlFor="title" value="Title"/>
         <TextInput id="title" value={data.title} onChange={handleFormInput} type="text" className="mt-1 block w-full"/>
-
         <InputError message={errors.title} className="mt-2"/>
       </div>
       <div>
@@ -88,16 +75,14 @@ const EditCategoryForm = () => {
         <SelectInput id="parent_id" defaultValue={data.parent_id} onChange={handleFormInput} className="mt-1 block w-full">
           <option value="">None</option>
           {categories_all &&
-            (categories_all as unknown as any[]).map((cat) => (
+            (filterObjectsById(categories_all, category.id) as unknown as any[]).map((cat) => (
               <option key={cat.uuid} value={cat.id}>
                 {cat.title}
               </option>
             ))}
         </SelectInput>
-
         <InputError message={errors.parent_id} className="mt-2"/>
       </div>
-
       <div>
         <InputLabel htmlFor="excerpt" value="Excerpt"/>
         <Textarea id="excerpt" value={data.excerpt} onChange={handleFormInput} className="mt-1 block w-full min-h-[100px]"/>
@@ -110,6 +95,21 @@ const EditCategoryForm = () => {
         <CharCounter count={count.body || 0} max={2500}/>
         <InputError message={errors.body} className="mt-4"/>
       </div>
+
+      <div>
+        <InputLabel htmlFor="gallery" value="Gallery"/>
+        <SelectInput showValue={true} id={`gallery`} name={`gallery`} className={`w-full mt-1`} value={data.gallery} onChange={handleFormInput}>
+          <option value="">Select a gallery</option>
+          {(galleries as unknown as any).map((gal: any) => (
+            <option key={gal.id} value={gal.id}>
+              {gal.title}
+            </option>
+          ))}
+        </SelectInput>
+        <InputError message={errors.gallery} className="mt-2"/>
+      </div>
+
+
       <div className="grid grid-cols-2 gap-6">
         <div>
           <InputLabel htmlFor="live" value="Live"/>
@@ -128,8 +128,6 @@ const EditCategoryForm = () => {
           <InputError message={errors.popular} className="mt-2"/>
         </div>
       </div>
-      
-
       <div className={`flex items-center justify-between`}>
         <SaveSubmitButton processing={processing} recentlySuccessful={recentlySuccessful}/>
       </div>

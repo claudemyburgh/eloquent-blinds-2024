@@ -4,8 +4,89 @@
 
 
 @layer base {
+    /*
+  These are the styles from DaisyUI needed
+  for the scroll bar colours
+  */
+    :root {
+        /* Default is Dark */
+        --primary: theme('colors.gray.800');
+        --secondary: theme('colors.primary.500');
+        --pswp-bg: var(--secondary);
+        --pswp-placeholder-bg: #222;
+
+
+        --pswp-root-z-index: 100000;
+
+        --pswp-preloader-color: rgba(79, 79, 79, 0.4);
+        --pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);
+
+        /* defined via js:
+        --pswp-transition-duration: 333ms; */
+
+        --pswp-icon-color: #fff;
+        --pswp-icon-color-secondary: #4f4f4f;
+        --pswp-icon-stroke-color: #4f4f4f;
+        --pswp-icon-stroke-width: 2px;
+        --pswp-error-text-color: var(--pswp-icon-color);
+    }
+
+    *::selection {
+        background: var(--secondary);
+        color: var(--primary)
+    }
+
+    /* Firefox */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--secondary) var(--primary);
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: var(--primary);
+        border-radius: 0;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: var(--secondary);
+        border-radius: 5px;
+        border: 2px solid var(--primary);
+    }
+
+    *::selection {
+        @apply bg-primary-100 text-primary-600;
+    }
+
+
+    .heading-1 {
+        @apply text-4xl font-black sm:text-5xl text-gray-900 dark:text-white tracking-tight;
+    }
+
+    .heading-2 {
+        @apply text-3xl font-black sm:text-5xl text-gray-900 dark:text-white tracking-tight;
+    }
+
+    .heading-3 {
+        @apply text-3xl font-extrabold sm:text-4xl text-gray-900 dark:text-white tracking-tight;
+    }
+
+    .hover-underline {
+        @apply hover:underline underline-offset-8 decoration-wavy isolate z-10 decoration-gray-300/10 hover:decoration-primary-500 decoration-1 inline-block relative;
+
+    }
+
+    /*.hover-underline::before {*/
+    /*    @apply absolute bg-primary-500/10 -inset-2 content-[''] z-0;*/
+    /*}*/
+
 
 }
+
 
 @layer components {
     .wrapper {
@@ -24,42 +105,78 @@
         @apply mt-1 text-sm text-gray-600 dark:text-gray-400;
     }
 
-    .spinner {
-        animation: rise 800ms ease-in-out infinite;
+    .loader {
+        @apply relative z-10 w-full block mb-4 h-[4px] bg-gray-100 dark:bg-gray-700 shadow-inner shadow-black/20 rounded-full isolate after:content-[''] before:content-[''];
     }
 
-    .spinner:nth-child(1) {
-        animation-delay: calc(cos(50deg) * 100ms);
+    .loader:after {
+        @apply w-1/2 h-full absolute block rounded-full bg-primary-500 top-0 left-0 animate-slide-fast z-20;
     }
 
-    .spinner:nth-child(2) {
-        animation-delay: calc(cos(50deg) * 200ms);
+    .loader:before {
+        @apply w-1/2 translate-x-1/2 h-full absolute block rounded-full bg-tertiary-500 top-0 left-0 animate-slide-fast z-10;
+        animation-delay: 0.1s;
     }
 
-    .spinner:nth-child(3) {
-        animation-delay: calc(cos(50deg) * 300ms);
+
+    .btn {
+        @apply inline-flex items-center px-4 py-2 rounded-global font-semibold text-xs uppercase tracking-widest transition ease-in-out duration-150 disabled:opacity-25 focus:outline-none focus:ring-2;
     }
 
-    .spinner:nth-child(4) {
-        animation-delay: calc(cos(50deg) * 400ms);
+    .btn-gradient {
+        @apply inline-flex items-center bg-gradient-to-b from-primary-600 to-secondary-400 border border-transparent rounded-global font-semibold text-xs  uppercase tracking-widest hover:to-secondary-300 focus:to-secondary-300 active:to-secondary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition ease-in-out duration-150 text-shadow text-white;
     }
 
-    .spinner:nth-child(5) {
-        animation-delay: calc(cos(50deg) * 500ms);
+    .btn-primary {
+        @apply bg-gray-800 dark:bg-gray-200 border-transparent text-white dark:text-gray-800 hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
     }
 
-    .spinner:nth-child(6) {
-        animation-delay: calc(cos(50deg) * 600ms);
+
+    .btn-secondary {
+        @apply bg-transparent border border-black dark:border-gray-500/10 text-gray-700 dark:text-gray-300 shadow-sm hover:bg-gray-50 dark:hover:bg-gray-950/50  focus:ring-primary-500/10 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
     }
 
-    .spinner:nth-child(7) {
-        animation-delay: calc(cos(50deg) * 700ms);
+    .image-mask-none {
+        mask-image: none;
     }
 
-    @keyframes rise {
-        50% {
-            transform: translateY(150%);
-        }
+    .btn-danger {
+        @apply bg-red-600 border border-transparent text-white hover:bg-red-500 active:bg-red-700 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+    }
+
+    .mouse-light {
+        @apply relative;
+        --mouse-x: 0;
+        --mouse-y: 0;
+        --light: rgba(14, 165, 233, 0.10);
+        --light-size: 300px;
+    }
+
+    .dark .mouse-light {
+        --light: rgba(75, 155, 255, 0.25)
+    }
+
+    .mouse-light:hover::before {
+        opacity: 1;
+        --light-size: 300px;
+    }
+
+    .mouse-light::before {
+        --light-size: 10px;
+        content: "";
+        background: radial-gradient(var(--light-size) circle at var(--mouse-x) var(--mouse-y), var(--light), transparent);
+        filter: saturate(150%);
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+        border-radius: inherit;
+        position: absolute;
+        opacity: 0;
+        transition-duration: 250ms;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        transform-origin: center;
     }
 
 

@@ -1,31 +1,23 @@
+//@ts-expect-error
 let mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
-function updateTheme(savedTheme?: string): string {
+function updateTheme(savedTheme: string | undefined) {
   let theme = "system"
-  try {
-    if (typeof window !== "undefined" && !savedTheme) {
-      savedTheme = window.localStorage.theme
-    }
-    if (savedTheme === "dark") {
-      theme = "dark"
-      document.documentElement.classList.add("dark")
-    } else if (savedTheme === "light") {
-      theme = "light"
-      document.documentElement.classList.remove("dark")
-    } else if (mediaQuery.matches) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  } catch (error) {
+  if (savedTheme === "dark") {
+    theme = "dark"
+    document.documentElement.classList.add("dark")
+  } else if (savedTheme === "light") {
     theme = "light"
+    document.documentElement.classList.remove("dark")
+  } else if (mediaQuery.matches) {
+    document.documentElement.classList.add("dark")
+  } else {
     document.documentElement.classList.remove("dark")
   }
   return theme
 }
 
-
-function updateThemeWithoutTransitions(savedTheme?: string) {
+function updateThemeWithoutTransitions(savedTheme: string | undefined) {
   updateTheme(savedTheme)
   document.documentElement.classList.add("[&_*]:!transition-none")
   window.setTimeout(() => {
@@ -33,20 +25,21 @@ function updateThemeWithoutTransitions(savedTheme?: string) {
   }, 0)
 }
 
+//@ts-expect-error
 document.documentElement.setAttribute("data-theme", updateTheme())
 
 new MutationObserver(([{oldValue}]) => {
-  let newValue: string | null = document.documentElement.getAttribute("data-theme")
+  let newValue = document.documentElement.getAttribute("data-theme")
   if (newValue && newValue !== oldValue) {
     try {
-      window.localStorage.setItem("theme", newValue)
+      localStorage.setItem("theme", newValue)
     } catch (error) {
     }
     updateThemeWithoutTransitions(newValue)
   }
 }).observe(document.documentElement, {attributeFilter: ["data-theme"], attributeOldValue: true})
 
-// @ts-expect-error
+//@ts-expect-error
 mediaQuery.addEventListener("change", updateThemeWithoutTransitions)
-// @ts-expect-error
+//@ts-expect-error
 window.addEventListener("storage", updateThemeWithoutTransitions)

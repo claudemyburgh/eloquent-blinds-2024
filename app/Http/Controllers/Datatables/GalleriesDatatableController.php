@@ -45,7 +45,7 @@
          * A description of the entire PHP function.
          *
          * @param Request $request description
-         * @return array
+         * @return Response
          *
          * @throws Exception
          */
@@ -60,6 +60,7 @@
         public function store(StoreGalleryRequest $request): RedirectResponse
         {
             $gallery = Gallery::create($request->validated());
+
             return to_route('dashboard.galleries.edit', $gallery);
         }
 
@@ -69,6 +70,7 @@
         public function edit(string $id): Response
         {
             $gallery = Gallery::with('media')->find($id);
+
             return Inertia::render('Dashboard/Galleries/Edit', compact('gallery'));
         }
 

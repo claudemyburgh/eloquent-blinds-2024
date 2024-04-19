@@ -3,3 +3,9 @@
 ## About Eloquent Blinds
 
 Eloquent Blinds is a website for selling blinds and shutters.
+
+Cache Lists
+
+- categories_with_all (all categories, with media, product.media where live)
+- categories_list (only categories with tree)
+- products_list (only products with tree)

@@ -4,6 +4,7 @@
 
     use App\Models\User;
     use Illuminate\Database\Seeder;
+    use Illuminate\Support\Facades\Hash;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -14,15 +15,19 @@
          */
         public function run(): void
         {
-            // User::factory(10)->create();
+
 
             User::factory()->create([
-                'name' => 'Test User',
-                'email' => 'test@example.com',
+                'name' => 'Claude Myburgh',
+                'email' => 'claude@eloquentblinds.co.za',
+                'password' => Hash::make('password')
             ]);
+
+            User::factory(10)->create();
 
             $this->call([
                 CategorySeeder::class,
+                ProductSeeder::class
             ]);
         }
     }

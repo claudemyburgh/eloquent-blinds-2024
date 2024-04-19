@@ -44,21 +44,13 @@
                         'location' => $request->url(),
                     ]);
                 },
-                'categories_all' => Cache::remember('categories_all', 360, function () {
-                    return Category::orderBy('title')->tree()->get()->toTree();
+                'categories_list' => Cache::remember('categories_list', 3600, function () {
+                    return Category::live()->orderBy('title')->tree()->get()->toTree();
                 }),
-
-                'products_all' => Cache::remember('products_all', 360, function () {
+                'products_list' => Cache::remember('products_list', 3600, function () {
                     return Product::orderBy('title')->get();
                 }),
                 'flash' => Session::get('flash'),
-                //                'emails' => function () {
-                //                    return [
-                //                        'unread' => Cache::remember('messages', 120, function () {
-                //                            return Message::unread()->count();
-                //                        }),
-                //                    ];
-                //                },
                 'csrf' => csrf_token(),
             ];
         }

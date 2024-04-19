@@ -11,7 +11,6 @@
     use Illuminate\Database\Eloquent\Builder;
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Cache;
     use Inertia\Inertia;
     use Inertia\Response;
 
@@ -47,7 +46,6 @@
          * A description of the entire PHP function.
          *
          * @param Request $request description
-         * @return Response
          *
          * @throws Exception
          */
@@ -61,7 +59,6 @@
          */
         public function store(StoreCategoryRequest $request): RedirectResponse
         {
-            Cache::forget('categories-menu');
             $category = Category::create($request->validated());
             return to_route('dashboard.categories.edit', $category);
         }
@@ -73,7 +70,7 @@
         {
             return Inertia::render('Dashboard/Categories/Edit', [
                 'category' => Category::with('media', 'galleries')->find($id),
-                'galleries' => Gallery::get()
+                'galleries' => Gallery::get(),
             ]);
         }
 
@@ -82,15 +79,9 @@
          */
         public function update(UpdateCategoryRequest $request, string $id): void
         {
-            Cache::forget('categories-menu');
-            Cache::forget('categories-list');
             $category = Category::findOrFail($id);
-            $category->update($request->except(['gallery']));
-            if ($request['gallery']) {
-                $category->galleries()->sync($request->only(['gallery']));
-            } else {
-                $category->galleries()->detach();
-            }
+            $category->update($request->except('gallery'));
+            $category->galleries()->sync($request->filled('gallery') ? $request->only('gallery') : []);
         }
 
         /**

@@ -31,7 +31,6 @@
                 'body' => 'required',
                 'popular' => 'required',
                 'live' => 'required',
-                'gallery' => 'nullable'
             ];
         }
     }

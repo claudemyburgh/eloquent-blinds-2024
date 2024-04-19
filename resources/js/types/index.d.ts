@@ -1,5 +1,5 @@
-import {ReactNode} from "react"
-import CategoriesAllProps from "@/types/datatable/categories-all-props";
+import { ReactNode } from "react"
+import CategoriesListProps from "@/types/datatable/categories-list-props"
 
 export interface User {
   id: number
@@ -11,13 +11,12 @@ export interface User {
   email_verified_at: string
 }
 
-
 export type PageProps<T extends Record<string, unknown> = Record<string, unknown>> = T & {
   auth: {
     user: User
   }
   csrf: string
-  categories_all: CategoriesAllProps
+  categories_all: CategoriesListProps
   flash: string | null
   emails: {
     unread: number

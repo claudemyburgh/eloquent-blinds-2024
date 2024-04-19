@@ -1,8 +1,7 @@
-import {CategoryProps} from "@/types/datatable/index";
+import { CategoryProps } from "@/types/datatable/index"
 
-export default interface CategoriesAllProps {
-
-  categories_all: CategoryProps[]
+export default interface CategoriesListProps {
+  categories_list: CategoryProps[]
   // categories_all: {
   //   id: number
   //   title: string

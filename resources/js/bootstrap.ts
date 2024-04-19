@@ -1,5 +1,5 @@
 import axios from "axios"
-import "@/lib/theme-script"
+
 
 window.axios = axios
 window.axios.defaults.withCredentials = true

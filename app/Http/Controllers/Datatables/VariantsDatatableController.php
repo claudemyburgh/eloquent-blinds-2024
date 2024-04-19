@@ -45,12 +45,13 @@
          * A description of the entire PHP function.
          *
          * @param Request $request description
-         * @return Response
          *
          * @throws Exception
          */
         public function index(Request $request): Response
         {
+
+//            dd($this->getResponse($request));
             return Inertia::render('Datatables/Index', $this->getResponse($request));
         }
 

@@ -45,12 +45,12 @@
          * A description of the entire PHP function.
          *
          * @param Request $request description
-         * @return Response
          *
          * @throws Exception
          */
         public function index(Request $request): Response
         {
+//            dd($this->getResponse($request));
             return Inertia::render('Datatables/Index', $this->getResponse($request));
         }
 
@@ -68,10 +68,9 @@
          */
         public function edit(string $id): Response
         {
-
             return Inertia::render('Dashboard/Products/Edit', [
                 'product' => Product::with('media', 'galleries')->find($id),
-                'galleries' => Gallery::get()
+                'galleries' => Gallery::get(),
             ]);
         }
 
@@ -82,7 +81,7 @@
         {
             $product = Product::findOrFail($id);
             $product->update($request->except(['gallery']));
-            if ($request['gallery']) {
+            if ($request->filled('gallery')) {
                 $product->galleries()->sync($request->only(['gallery']));
             } else {
                 $product->galleries()->detach();

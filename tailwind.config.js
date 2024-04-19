@@ -1,42 +1,65 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-import forms from '@tailwindcss/forms';
-import colors from "tailwindcss/colors";
+import defaultTheme from "tailwindcss/defaultTheme"
 
-/** @type {import('tailwindcss').Config} */
+import colors from "tailwindcss/colors"
+
+/** @type {import("tailwindcss").Config} */
 export default {
   content: [
-    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-    './storage/framework/views/*.php',
-    './resources/views/**/*.blade.php',
-    './resources/js/**/*.{tsx,ts,js,jsx}',
+    "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+    "./storage/framework/views/*.php",
+    "./resources/views/**/*.blade.php",
+    "./resources/js/**/*.{tsx,ts,js,jsx}",
+    "./app/View/Components/**/*.php",
   ],
   darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+        sans: ["Figtree", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: colors.sky,
         secondary: colors.cyan,
-        tri: colors.rose,
+        tertiary: colors.yellow,
         gray: colors.slate,
       },
       width: {
         "square-diagonal": Math.sqrt(2) * 100 + "%",
       },
       borderRadius: {
-        global: ".75rem",
+        global: "0.5rem",
       },
       dropShadow: {
         hard: ["0 3px 3px rgba(0, 0, 0, 0.5)", "0 6px 6px rgba(0, 0, 0, 0.25)"],
       },
-      keyframes: {},
+      animation: {
+        "slide-slow": "slide-x 3s ease-in-out infinite",
+        slide: "slide-x 2s ease-in-out infinite",
+        "slide-fast": "slide-x 1s ease-in-out infinite",
+      },
+      keyframes: {
+        "slide-x": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(100%)" },
+        },
+      },
       aspectRatio: {
         "4/3": "4 / 3",
       },
     },
   },
 
-  plugins: [forms],
-};
+  plugins: [
+    require("@tailwindcss/nesting")("postcss-nesting"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
+    require("@designbycode/tailwindcss-mask-image"),
+    require("@designbycode/tailwindcss-conic-gradient"),
+    require("tailwindcss-attributes"),
+    require("@designbycode/tailwindcss-text-shadow"),
+    require("@designbycode/tailwindcss-reflection"),
+  ],
+}

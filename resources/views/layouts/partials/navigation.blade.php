@@ -26,7 +26,15 @@
                 <x-navigation.mobile-toggle />
             </div>
             <div id="mobile_close" class="w-full mt-4 lg:hidden space-y-4 font-bold items-center">
-                hidden menu
+                @foreach($links as $link)
+                    @if($link->route !== 'categories.index')
+                        <a
+                            @class([$link->classes, 'flex' ]) href="{{ route($link->route) }}">{{ $link->name }}
+                        </a>
+                    @else
+                        <x-navigation.mobile-dropdown :$link :$categories />
+                    @endif
+                @endforeach
             </div>
         </mouse-spotlight>
     </headless-navigation>

@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'placeholder' => 'https://picsum.photos/800',
+    'placeholder' => 'https://fakeimg.pl/800x800',
 
     /*
     |--------------------------------------------------------------------------

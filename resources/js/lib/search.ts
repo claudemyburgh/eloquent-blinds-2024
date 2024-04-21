@@ -51,7 +51,8 @@ async function getProducts(): Promise<Product[]> {
 //@ts-expect-error
 async function retrieveSearchResults(query: string): Promise<Fuse.FuseResult<Product>[]> {
   const posts = await getProducts()
-  const fuse = new Fuse(posts, {
+  //@ts-expect-error
+  const fuse = new Fuse(posts.data, {
     keys: ["title", "category"],
     includeScore: true,
     shouldSort: true,
@@ -60,7 +61,6 @@ async function retrieveSearchResults(query: string): Promise<Fuse.FuseResult<Pro
     threshold: 0.3,
   })
 
-  console.log(fuse)
   return fuse.search(query)
 }
 

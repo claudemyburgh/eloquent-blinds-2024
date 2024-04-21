@@ -181,7 +181,7 @@
     }
 
     .pswp__bg {
-        --pswp-bg: var(--primary);
+        --pswp-bg: theme('colors.primary.500');
     }
 
     .pswp__custom-caption {
@@ -205,13 +205,13 @@
     }
 
     .splide__track--nav > .splide__list > .splide__slide {
-        border: 1px solid transparent;
+        border: 3px solid transparent;
         cursor: pointer;
         opacity: .7;
     }
 
     .splide__track--nav > .splide__list > .splide__slide.is-active {
-        border: 1px solid theme('colors.primary.500');
+        border: 3px solid theme('colors.primary.500');
         opacity: 1;
     }
 
@@ -252,7 +252,7 @@
 
     .splide__arrow:focus-visible {
         outline: 3px solid theme('colors.primary.500');
-        outline-offset: 3px;
+        outline-offset: 6px;
     }
 
     .splide__arrow--prev {
@@ -268,9 +268,9 @@
     }
 
     .splide.is-focus-in .splide__arrow:focus {
-        outline: 1px solid theme('colors.primary.500');
+        outline: 2px solid theme('colors.primary.500');
         border-radius: theme('borderRadius.md');
-        outline-offset: 3px;
+        outline-offset: 6px;
     }
 
     .splide__pagination {
@@ -309,12 +309,12 @@
 
     .splide__pagination__page:focus-visible {
         outline: 1px solid theme('colors.primary.500/50');
-        outline-offset: 1px
+        outline-offset: 3px
     }
 
     .splide.is-focus-in .splide__pagination__page:focus {
         outline: 1px solid theme('colors.primary.500/50');
-        outline-offset: 1px
+        outline-offset: 3px
     }
 
     .splide__container {
@@ -388,7 +388,7 @@
 
     .splide__spinner {
         animation: splide-loading 1s linear infinite;
-        border: 2px solid theme('colors.primary.500');
+        border: 4px solid theme('colors.primary.500');
         border-left-color: transparent;
         border-radius: 50%;
         bottom: 0;
@@ -514,12 +514,12 @@
 
     .splide__toggle:focus-visible {
         outline: 3px solid theme('colors.primary.500');
-        outline-offset: 3px
+        outline-offset: 6px
     }
 
     .splide.is-focus-in .splide__toggle:focus {
         outline: 3px solid theme('colors.primary.500');
-        outline-offset: 3px;
+        outline-offset: 6px;
     }
 
     .splide__arrows--rtl .splide__arrow--prev {

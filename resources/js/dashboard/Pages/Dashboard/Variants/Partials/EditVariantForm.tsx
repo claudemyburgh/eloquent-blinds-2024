@@ -1,15 +1,14 @@
 import { useForm, usePage } from "@inertiajs/react"
 import { InputError, InputLabel, SaveSubmitButton, SelectInput, TextInput } from "@/Shared/Components/FormParials"
 import { PageProps } from "@/types"
-
 import toast from "react-hot-toast"
-import { ToastItem } from "resources/js/Shared/Components/Alerts"
+import { ToastItem } from "@/Shared/Components/Alerts"
 import { CategoriesListProps, GalleryProps, ProductProps } from "@/types/datatable"
 import VariantProps from "@/types/datatable/variant-props"
 import React from "react"
 
 const EditVariantForm = () => {
-  const { variant, products_all } = usePage<VariantProps & CategoriesListProps & GalleryProps & PageProps & any>().props
+  const { variant, products_list } = usePage<VariantProps & CategoriesListProps & GalleryProps & PageProps & any>().props
 
   const { data, setData, put, errors, processing, recentlySuccessful } = useForm({
     name: variant.name || "",
@@ -59,8 +58,8 @@ const EditVariantForm = () => {
         <InputLabel htmlFor="product_id" value="Product" />
         <SelectInput id="product_id" defaultValue={data.product_id} onChange={handleFormInput} className="mt-1 block w-full">
           <option value="">None</option>
-          {products_all &&
-            (products_all as unknown as any[]).map((product: { id: number; title: string }) => (
+          {products_list &&
+            (products_list as unknown as any[]).map((product: { id: number; title: string }) => (
               <option key={product.id} value={product.id}>
                 {product.title}
               </option>

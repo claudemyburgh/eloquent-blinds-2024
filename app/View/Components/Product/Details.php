@@ -21,6 +21,6 @@ class Details extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.product-details');
+        return view('components.product.details');
     }
 }

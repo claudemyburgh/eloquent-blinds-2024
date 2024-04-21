@@ -12,7 +12,7 @@ class Media extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public Product $product, public string $route)
+    public function __construct(public Product $product)
     {
 
     }

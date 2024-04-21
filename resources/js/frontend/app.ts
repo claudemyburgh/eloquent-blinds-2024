@@ -23,11 +23,11 @@ if (elms.length > 0) {
       gap: 50,
       start: 10,
       autoWidth: true,
-      preloadPages: 20,
+      preloadPages: 15,
       direction: "ltr",
       // perPage: 3,
       autoScroll: {
-        speed: 0.5,
+        speed: 1,
       },
     }).mount({ AutoScroll })
   }
@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
     pagination: true,
     arrows: false,
     lazyLoad: "nearby",
+    gap: 10,
+    speed: 1000,
   })
 
   const thumbnails = new Splide("#thumbnail-carousel", {
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pagination: false,
     isNavigation: true,
     arrows: true,
+    speed: 1000,
     lazyLoad: "nearby",
   })
 

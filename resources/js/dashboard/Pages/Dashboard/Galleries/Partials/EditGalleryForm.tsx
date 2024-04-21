@@ -4,8 +4,8 @@ import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Tex
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { ToastItem } from "resources/js/Shared/Components/Alerts"
 import { CounterProps, GalleryProps } from "@/types/datatable"
+import { ToastItem } from "@/Shared/Components/Alerts"
 
 const EditGalleryForm = () => {
   const { gallery } = usePage<GalleryProps & PageProps>().props

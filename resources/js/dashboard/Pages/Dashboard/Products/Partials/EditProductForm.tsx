@@ -4,9 +4,9 @@ import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Tex
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { ToastItem } from "resources/js/Shared/Components/Alerts"
 import { CategoriesListProps, CounterProps, GalleryProps, ProductProps } from "@/types/datatable"
 import SelectStepCategory from "@/dashboard/Components/FormPartials/SelectStepCategory"
+import { ToastItem } from "@/Shared/Components/Alerts"
 
 const EditProductForm = () => {
   const { product, categories_list, galleries } = usePage<ProductProps & CategoriesListProps & GalleryProps & PageProps>().props

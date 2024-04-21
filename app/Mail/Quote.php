@@ -19,7 +19,7 @@ class Quote extends Mailable
      */
     public function __construct(public array $data)
     {
-        //
+
     }
 
     /**
@@ -40,6 +40,13 @@ class Quote extends Mailable
     {
         return new Content(
             markdown: 'email.quote.send',
+            with: [
+                'name' => $this->data['first_name'],
+                'email' => $this->data['email'],
+                'phone' => $this->data['phone'],
+                'subject' => $this->data['subject'],
+                'message' => $this->data['message'],
+            ]
         );
     }
 

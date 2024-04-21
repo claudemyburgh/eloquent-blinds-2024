@@ -128,7 +128,15 @@ const QuoteForm: FC<Props> = ({ className }) => {
             </div>
             <div className={`col-span-2`}>
               <InputLabel htmlFor={`subject`} value={`Subject`} />
-              <TextInput name={`subject`} id={`subject`} type={`text`} disabled={product?.length > 0} value={data.subject} onChange={handleInput} className={`mt-2 w-full`} />
+              <TextInput
+                name={`subject`}
+                id={`subject`}
+                type={`text`}
+                disabled={product?.length > 0}
+                value={data.subject}
+                onChange={handleInput}
+                className={twMerge("mt-2 w-full ", product?.length > 0 && "cursor-not-allowed opacity-50")}
+              />
               <InputError className={`mt-2`} message={errors.subject} />
             </div>
           </div>

@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\QuoteFormSubmitted;
 use App\Models\Client;
+use Illuminate\Support\Facades\Session;
 
 class SaveClientToDatabase
 {
@@ -20,7 +21,11 @@ class SaveClientToDatabase
      */
     public function handle(QuoteFormSubmitted $event): void
     {
+        $client = Client::where('email', $event->data['email'])->first();
+        if (! $client) {
+            $client = Client::create($event->data);
+        }
 
-        $client = Client::firstOrCreate($event->data);
+        Session::now('flash', 'Success');
     }
 }

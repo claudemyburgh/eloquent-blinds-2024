@@ -4,6 +4,8 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -15,9 +17,9 @@ class QuoteThanks extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public array $data)
     {
-        //
+
     }
 
     /**
@@ -26,7 +28,11 @@ class QuoteThanks extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Quote Thanks',
+            from: new Address(config('mail.from.address'), config('mail.from.name')),
+            replyTo: [
+                new Address(config('mail.from.address'), config('mail.from.name')),
+            ],
+            subject: 'Thank You contacting us',
         );
     }
 
@@ -37,13 +43,16 @@ class QuoteThanks extends Mailable
     {
         return new Content(
             markdown: 'email.quote.thanks',
+            with: [
+                'name' => $this->data['first_name'],
+            ],
         );
     }
 
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return array<int, Attachment>
      */
     public function attachments(): array
     {

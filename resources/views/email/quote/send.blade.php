@@ -1,12 +1,18 @@
 <x-mail::message>
-# Introduction
+# From {{ config('app.name') }}
+### Subject: {{ $subject }}
 
-The body of your message.
+<x-mail::table>
+|||
+|:---------- | ------------:|
+| Name | {{ $name }} |
+| Email | {{ $email }} |
+| Phone | {{ $phone }} |
+</x-mail::table>
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+
+{!! nl2br($message) !!}
 
 Thanks,<br>
-{{ config('app.name') }}
+{{ config('app.name') }} (PTY) Ltd.
 </x-mail::message>

@@ -1,10 +1,10 @@
 <section {{  $attributes->merge(['class' => '@container grid grid-cols-6 my-12 gap-6']) }}>
     <header class="flex justify-center flex-col pr-6 col-span-6 @lg:col-span-6 @5xl:col-span-2">
-        <h1 class="heading-1 text-shadow-long-[5] text-shadow-primary-500/10 dark:text-shadow-black">
+        <h1 class="heading-1 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
             @if(Route::currentRouteName() !== 'quote.index')
                 Get in touch
             @else
-                Get your Free quote
+                Get your <span class="text-primary-500">free</span> online quote
             @endif
         </h1>
         <p class="mt-4 text-lg text-gray-500 dark:text-gray-300 sm:mt-3">
@@ -23,7 +23,7 @@
     </header>
 
     @foreach(config('contact-details.users') as $user)
-        <x-contact.card :name="$user['name']" :phone="$user['phone']" :email="$user['email']" />
+        <x-contact.card :name="$user['name']" :phone="$user['phone']" :email="$user['email']" :image="$user['image']" />
     @endforeach
 
 

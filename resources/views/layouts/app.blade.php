@@ -40,24 +40,33 @@
 <x-cta.blinds />
 <x-marquee.ticker>
     @foreach($categories_with_all as $category)
-        <a href="#" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+        <a href="{{ route('categories.show', $category) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
             {{$category->title}}
         </a>
-        @foreach($category->children as $child)
-            <a href="#" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
-                {{$child->title}}
-            </a>
-            @foreach($child->products as $product)
-                <a href="#" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+        @if($category->products->count())
+            @foreach($category->products as $product)
+                <a href="{{ route('products.show', [$category, $product]) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
                     {{$product->title}}
                 </a>
             @endforeach
-        @endforeach
+        @else
+            @foreach($category->children as $child)
+                <a href="{{ route('categories.show', $child) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+                    {{$child->title}}
+                </a>
+                @foreach($child->products as $product)
+                    <a href="{{ route('products.show', [$child, $product]) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+                        {{$product->title}}
+                    </a>
+                @endforeach
+            @endforeach
+        @endif
+
     @endforeach
 
 </x-marquee.ticker>
 <div class="wrapper">
-    <x-contact-section />
+    <x-contact.section />
 </div>
 
 <x-footer />

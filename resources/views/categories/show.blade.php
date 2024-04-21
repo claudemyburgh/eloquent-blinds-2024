@@ -1,12 +1,87 @@
-<x-app-layout>
+<x-app-layout :title="$category->title">
 
-    <div class="wrapper my-28 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 p-0">
+    <x-slot name="seo">
+        {{--  HTML Meta Tags--}}
+        <meta property="og:title" content="Eloquent Blinds | {{$category->title }}" />
+        <meta property="og:description"
+              content="{{ $category->excerpt }}" />
+        <meta property="og:image" content="{{ $category->getFirstMediaUrl('default', 'card') }}" />
+        {{--  Twitter Meta Tags --}}
+        <meta name="twitter:title" content="Eloquent Blinds | {{$category->title }}" />
+        <meta name="twitter:description"
+              content="{{ $category->excerpt }}" />
+        <meta name="twitter:image" content="{{ $category->getFirstMediaUrl('default', 'card')}}" />
+    </x-slot>
 
-        <div class="bg-gray-100 first:col-span-2 first:row-span-2 dark:bg-gray-800 border aspect-square rounded border-gray-200 dark:border-gray-800 ">
-            <h4>{{ $category->title }}</h4>
+    <section class="relative">
+        <div class="wrapper py-24 lg:py-32 space-y-16">
+            <div class="lg:flex flex-row-reverse">
+                <div class="w-full lg:w-1/2">
+                    <figure
+                        class="relative p-[2px] w-full mb-6 flex rounded-global shadow-2xl shadow-primary-500/50 bg-gradient-to-br from-primary-500 to-secondary-400">
+                        <div aria-hidden="true"
+                             class="absolute w-1/2 top-0 h-[2px] left-0 bg-gradient-to-r  from-transparent via-primary-200 to-transparent"></div>
+                        <img width="800" height="600" class="rounded-global w-full aspect-4/3 object-cover"
+                             src="{{ $category->getFirstMediaUrl('default', 'large') }}"
+                             alt="{{ $category->title }} image">
+                    </figure>
+                </div>
+                <div class="w-full lg:w-1/2 pr-6">
+                    <h1 class="col-span-12 heading-1 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
+                        {{ $category->title }}
+                    </h1>
+                    @if($category->body)
+                        <article class="prose prose-lg dark:prose-invert my-8 ">
+                            @markdown($category->body)
+                        </article>
+                    @endif
+                </div>
+            </div>
+            <x-shutters-comparison class="py-12" />
+            @if($category->products->count())
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12">
+                        <h3 class="heading-3 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
+                            {{ $category->products->count() }} {{ Str::plural('Product', $category->products->count()) }} in category {{ $category->title }}
+                        </h3>
+                    </div>
+                    @foreach($category->products as $product)
+                        <x-product.card class="col-span-6 md:col-span-4 lg:col-span-3" :$product
+                                        route="{{ route('products.show', [$category, $product]) }}" />
+                    @endforeach
+                </div>
+            @else
+                <div class="grid grid-cols-12 gap-6 relative ">
+                    <div class="col-span-8 relative z-10">
+                        <h3 class="heading-3 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black text-balance mb-4">
+                            Sorry, we don't have and products listed for {{ $category->title }} for now.
+                        </h3>
+                        <p class="leading-loose text-balance">But don't worry, we have your sorted. You can always download our brochures or arrange a visit from us. We have samples for most of materials that's is being used in products
+                            .</p>
+                    </div>
+                </div>
+            @endif
+
+
+            @if($descendants->descendants->count())
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12">
+                        <h3 class="heading-3 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
+                            All products in {{ $category->title }}
+                        </h3>
+                    </div>
+                    @foreach($descendants->descendants as $descendant)
+                        @foreach($descendant->products as $product)
+                            <x-product.card class="col-span-6 md:col-span-4 lg:col-span-3" :$product
+                                            route="{{ route('products.show', [$descendant, $product]) }}" />
+                        @endforeach
+                    @endforeach
+                </div>
+            @endif
         </div>
+        <x-gallery.section :model="$category" class="wrapper" />
 
-    </div>
+    </section>
 
 
 </x-app-layout>

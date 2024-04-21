@@ -5,10 +5,11 @@ import { DangerButton, PrimaryButton, SecondaryButton } from "@/dashboard/Compon
 import { router, usePage } from "@inertiajs/react"
 import { orderBy } from "lodash"
 import { DatatableDeleteConfirm } from "./Partial"
-import { ToastItem } from "@/dashboard/Components/Alerts"
+
 import toast from "react-hot-toast"
 import { cleanUrl } from "@/lib/helpers"
 import { DatatableFilter } from "./FilterDatatable"
+import { ToastItem } from "@/Shared/Components/Alerts"
 
 const DatatableMainComponent: FC<UsePageDatatableProps<any> & any> = ({ data }) => {
   const { url } = usePage()

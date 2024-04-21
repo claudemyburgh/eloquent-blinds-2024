@@ -1,9 +1,8 @@
 @php($title = "Frequently asked questions")
 @php($description = "Questions. Frequently asked ones. Plus our answers. That's how FAQs work. If you can't find what you're looking for, you can always send us an email with your enquiry.")
 
-
-<x-app-layout title="{{ $title }}"
-              description="{{ $description }}">
+<x-app-layout :$title
+              :$description>
     <x-slot name="seo">
         {{--  HTML Meta Tags--}}
         <meta property="og:title" content="Eloquent Blinds | {{ $title }}" />
@@ -21,7 +20,7 @@
         <div class="grid md:grid-cols-2 md:divide-x md:divide-dashed md:divide-gray-900/10 md:dark:divide-gray-500/10">
             <div class="relative md:pr-6">
                 <header class="md:sticky top-32">
-                    <h1 class="heading-1 text-shadow-long-[5] text-shadow-primary-500/10 dark:text-shadow-black">
+                    <h1 class="heading-1 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
                         {{ $title }}
                     </h1>
                     <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-300">

@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import { useForm, usePage } from "@inertiajs/react"
-import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Textarea, TextInput } from "@/dashboard/Components/FormPartials"
+import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Textarea, TextInput } from "@/Shared/Components/FormParials"
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { ToastItem } from "@/dashboard/Components/Alerts"
+import { ToastItem } from "resources/js/Shared/Components/Alerts"
 import { CategoriesListProps, CounterProps, GalleryProps, ProductProps } from "@/types/datatable"
+import SelectStepCategory from "@/dashboard/Components/FormPartials/SelectStepCategory"
 
 const EditProductForm = () => {
   const { product, categories_list, galleries } = usePage<ProductProps & CategoriesListProps & GalleryProps & PageProps>().props
@@ -24,7 +25,7 @@ const EditProductForm = () => {
     excerpt: product.excerpt || "",
     live: product.live,
     popular: product.popular,
-    //@ts-expect-error
+
     gallery: product["galleries"][0]?.id || "",
   })
 
@@ -69,15 +70,7 @@ const EditProductForm = () => {
       </div>
       <div>
         <InputLabel htmlFor="category_id" value="Category" />
-        <SelectInput id="category_id" defaultValue={data.category_id} onChange={handleFormInput} className="mt-1 block w-full">
-          <option value="">None</option>
-          {categories_list &&
-            (categories_list as unknown as any[]).map((cat) => (
-              <option key={cat.uuid} value={cat.id}>
-                {cat.title}
-              </option>
-            ))}
-        </SelectInput>
+        <SelectStepCategory id="category_id" categories={categories_list} defaultValue={data.category_id} onChange={handleFormInput} />
         <InputError message={errors.category_id} className="mt-2" />
       </div>
 

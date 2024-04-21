@@ -1,40 +1,38 @@
-import {FormEventHandler, useEffect} from 'react';
-import Checkbox from '@/dashboard/Components/FormPartials/Checkbox';
-import GuestLayout from '@/dashboard/Layouts/GuestLayout';
-import InputError from '@/dashboard/Components/FormPartials/InputError';
-import InputLabel from '@/dashboard/Components/FormPartials/InputLabel';
-import PrimaryButton from '@/dashboard/Components/Buttons/PrimaryButton';
-import TextInput from '@/dashboard/Components/FormPartials/TextInput';
-import {Head, Link, useForm} from '@inertiajs/react';
+import { FormEventHandler, useEffect } from "react"
+import { Checkbox, InputError, InputLabel, TextInput } from "@/Shared/Components/FormParials"
+import GuestLayout from "@/dashboard/Layouts/GuestLayout"
+import PrimaryButton from "@/dashboard/Components/Buttons/PrimaryButton"
 
-export default function Login({status, canResetPassword}: { status?: string, canResetPassword: boolean }) {
-  const {data, setData, post, processing, errors, reset} = useForm({
-    email: '',
-    password: '',
+import { Head, Link, useForm } from "@inertiajs/react"
+
+export default function Login({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) {
+  const { data, setData, post, processing, errors, reset } = useForm({
+    email: "",
+    password: "",
     remember: false,
-  });
+  })
 
   useEffect(() => {
     return () => {
-      reset('password');
-    };
-  }, []);
+      reset("password")
+    }
+  }, [])
 
   const submit: FormEventHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    post(route('login'));
-  };
+    post(route("login"))
+  }
 
   return (
     <GuestLayout>
-      <Head title="Log in"/>
+      <Head title="Log in" />
 
-      {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+      {status && <div className="mb-4 text-sm font-medium text-green-600">{status}</div>}
 
       <form onSubmit={submit}>
         <div>
-          <InputLabel htmlFor="email" value="Email"/>
+          <InputLabel htmlFor="email" value="Email" />
 
           <TextInput
             id="email"
@@ -44,14 +42,14 @@ export default function Login({status, canResetPassword}: { status?: string, can
             className="mt-1 block w-full"
             autoComplete="username"
             isFocused={true}
-            onChange={(e) => setData('email', e.target.value)}
+            onChange={(e) => setData("email", e.target.value)}
           />
 
-          <InputError message={errors.email} className="mt-2"/>
+          <InputError message={errors.email} className="mt-2" />
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password" value="Password"/>
+          <InputLabel htmlFor="password" value="Password" />
 
           <TextInput
             id="password"
@@ -60,28 +58,24 @@ export default function Login({status, canResetPassword}: { status?: string, can
             value={data.password}
             className="mt-1 block w-full"
             autoComplete="current-password"
-            onChange={(e) => setData('password', e.target.value)}
+            onChange={(e) => setData("password", e.target.value)}
           />
 
-          <InputError message={errors.password} className="mt-2"/>
+          <InputError message={errors.password} className="mt-2" />
         </div>
 
-        <div className="block mt-4">
+        <div className="mt-4 block">
           <label className="flex items-center">
-            <Checkbox
-              name="remember"
-              checked={data.remember}
-              onChange={(e) => setData('remember', e.target.checked)}
-            />
+            <Checkbox name="remember" checked={data.remember} onChange={(e) => setData("remember", e.target.checked)} />
             <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
           </label>
         </div>
 
-        <div className="flex items-center justify-end mt-4">
+        <div className="mt-4 flex items-center justify-end">
           {canResetPassword && (
             <Link
-              href={route('password.request')}
-              className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+              href={route("password.request")}
+              className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
             >
               Forgot your password?
             </Link>
@@ -93,5 +87,5 @@ export default function Login({status, canResetPassword}: { status?: string, can
         </div>
       </form>
     </GuestLayout>
-  );
+  )
 }

@@ -9,6 +9,13 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+    ];
+
     protected $casts = [
         'avatar' => 'string',
     ];

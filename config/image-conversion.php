@@ -31,16 +31,11 @@ return [
         'height' => 600,
         'blur' => 0,
     ],
-    'tail' => [
-        'format' => 'webp',
-        'width' => 388,
-        'height' => 641,
-        'blur' => 0,
-    ],
+
     'card' => [
         'format' => 'webp',
-        'width' => 1200,
-        'height' => 630,
+        'width' => 300,
+        'height' => 300,
         'blur' => 0,
     ],
     'screen' => [

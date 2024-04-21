@@ -12,7 +12,7 @@
             </div>
             <div class="wrapper flex flex-col-reverse md:flex-row-reverse min-h-[300px] gap-8 py-12 ">
                 <div class="flex-1 relative">
-                    <h3 class="heading-1 text-shadow-long-[5] text-shadow-primary-500/10 dark:text-shadow-black mt-10">
+                    <h3 class="heading-1 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black mt-10">
                         Your destination for all things blinds related.</h3>
                     <p class="mt-6 text-lg leading-8 text-gray-500 dark:text-gray-300">
                         We take immense pride in offering a wide selection of high-quality blinds, meticulously designed
@@ -34,13 +34,13 @@
                         <div class="md:ml-24 flex min-w-full md:min-w-max space-x-6 sm:ml-3 lg:space-x-8">
                             <div class="flex space-y-6 flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                                 <div class="flex-shrink-0">
-                                    <img loading="lazy" width="290" height="290"
+                                    <img loading="lazy" width="176" height="176"
                                          class="size-44 shadow-2xl rounded-global object-cover md:size-64 2xl:size-72 "
                                          src="{{ Vite::asset('resources/img/black-blinds.webp') }}" alt="">
                                 </div>
 
                                 <div class="mt-6 flex-shrink-0 sm:mt-0">
-                                    <img loading="lazy" width="290" height="290"
+                                    <img loading="lazy" width="176" height="176"
                                          class="size-44 shadow-2xl rounded-global object-cover md:size-64 2xl:size-72 "
                                          src="{{ Vite::asset('resources/img/alu-blinds.webp') }}" alt="">
                                 </div>
@@ -48,13 +48,13 @@
                             </div>
                             <div class="flex space-y-6 sm:-mt-20 flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                                 <div class="flex-shrink-0">
-                                    <img loading="lazy" width="290" height="290"
+                                    <img loading="lazy" width="176" height="176"
                                          class="size-44 shadow-2xl rounded-global object-cover md:size-64 2xl:size-72 "
                                          src="{{ Vite::asset('resources/img/bambo-blinds.webp') }}" alt="">
                                 </div>
 
                                 <div class="mt-6 flex-shrink-0 sm:mt-0">
-                                    <img loading="lazy" width="290" height="290"
+                                    <img loading="lazy" width="176" height="176"
                                          class="size-44 shadow-2xl rounded-global object-cover md:size-64 2xl:size-72 "
                                          src="{{ Vite::asset('resources/img/zebra-blinds.webp') }}" alt="">
                                 </div>
@@ -63,13 +63,13 @@
 
                             <div class="flex space-y-6 flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
                                 <div class="flex-shrink-0">
-                                    <img loading="lazy" width="290" height="290"
+                                    <img loading="lazy" width="176" height="176"
                                          class="size-44 shadow-2xl rounded-global object-cover md:size-64 2xl:size-72 "
                                          src="{{ Vite::asset('resources/img/honey-blinds.webp') }}" alt="">
                                 </div>
 
                                 <div class="mt-6 flex-shrink-0 sm:mt-0">
-                                    <img loading="lazy" width="290" height="290"
+                                    <img loading="lazy" width="176" height="176"
                                          class="size-44 shadow-2xl rounded-global object-cover md:size-64 2xl:size-72 "
                                          src="{{ Vite::asset('resources/img/roller-blinds.webp') }}" alt="">
                                 </div>

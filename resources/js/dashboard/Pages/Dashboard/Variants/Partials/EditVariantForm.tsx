@@ -1,9 +1,9 @@
 import { useForm, usePage } from "@inertiajs/react"
-import { InputError, InputLabel, SaveSubmitButton, SelectInput, TextInput } from "@/dashboard/Components/FormPartials"
+import { InputError, InputLabel, SaveSubmitButton, SelectInput, TextInput } from "@/Shared/Components/FormParials"
 import { PageProps } from "@/types"
 
 import toast from "react-hot-toast"
-import { ToastItem } from "@/dashboard/Components/Alerts"
+import { ToastItem } from "resources/js/Shared/Components/Alerts"
 import { CategoriesListProps, GalleryProps, ProductProps } from "@/types/datatable"
 import VariantProps from "@/types/datatable/variant-props"
 import React from "react"

@@ -1,17 +1,17 @@
 <?php
 
-    namespace App\Http\Controllers\Frontend\Legal;
+namespace App\Http\Controllers\Frontend\Legal;
 
-    use App\Http\Controllers\Controller;
-    use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-    class PrivacyPolicyIndexController extends Controller
+class PrivacyPolicyIndexController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request)
     {
-        /**
-         * Handle the incoming request.
-         */
-        public function __invoke(Request $request)
-        {
-            return view('legal.privacy-policy');
-        }
+        return view('legal.privacy-policy');
     }
+}

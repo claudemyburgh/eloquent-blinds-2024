@@ -1,35 +1,34 @@
-import React, {FC, useState} from "react"
-import {Link, usePage} from "@inertiajs/react"
-import {cleanUrl} from "@/lib/helpers"
-import {CheckIcon, EyeIcon, PencilSquareIcon, TrashIcon, XMarkIcon} from "@heroicons/react/24/solid";
-import toast from "react-hot-toast";
-import {ToastItem} from "@/dashboard/Components/Alerts";
+import React, { FC, useState } from "react"
+import { Link, usePage } from "@inertiajs/react"
+import { cleanUrl } from "@/lib/helpers"
+import { CheckIcon, EyeIcon, PencilSquareIcon, TrashIcon, XMarkIcon } from "@heroicons/react/24/solid"
+import toast from "react-hot-toast"
+import { ToastItem } from "@/Shared/Components/Alerts"
 
-const DatatableAction: FC<{ id: any; deletion: boolean; name: string, editing: boolean }> = ({id, deletion, name, editing}) => {
-  const {url} = usePage()
+const DatatableAction: FC<{ id: any; deletion: boolean; name: string; editing: boolean }> = ({ id, deletion, name, editing }) => {
+  const { url } = usePage()
 
   const [open, setOpen] = useState<boolean>(false)
 
   return (
-    <div className={`flex space-x-5 relative items-center`}>
-
+    <div className={`relative flex items-center space-x-5`}>
       {!open ? (
         <>
           {deletion && (
             <button type={`button`} onClick={(e) => setOpen(!open)}>
-              <TrashIcon className={`w-5 h-5 text-rose-500`}/>
+              <TrashIcon className={`h-5 w-5 text-rose-500`} />
             </button>
           )}
           {name === "messages" ? (
-            <Link className={`flex items-center text-xs space-x-2 bg-primary-600 text-white px-2 py-1 rounded`} type={`button`} href={`${cleanUrl(url)}/${id}`}>
+            <Link className={`flex items-center space-x-2 rounded bg-primary-600 px-2 py-1 text-xs text-white`} type={`button`} href={`${cleanUrl(url)}/${id}`}>
               <span>View</span>
-              <EyeIcon className={`w-5 h-5 text-gray-400`}/>
+              <EyeIcon className={`h-5 w-5 text-gray-400`} />
             </Link>
           ) : (
             <>
               {editing && (
                 <Link type={`button`} href={`${cleanUrl(url)}/${id}/edit`}>
-                  <PencilSquareIcon className={`w-5 h-5 text-gray-400`}/>
+                  <PencilSquareIcon className={`h-5 w-5 text-gray-400`} />
                 </Link>
               )}
             </>
@@ -42,17 +41,17 @@ const DatatableAction: FC<{ id: any; deletion: boolean; name: string, editing: b
             preserveState={false}
             method={`delete`}
             onSuccess={() => {
-              toast.custom((t) => <ToastItem t={t} type={`success`} title={`Success`} message={`Deleted successfully`} icon={`check`}/>)
+              toast.custom((t) => <ToastItem t={t} type={`success`} title={`Success`} message={`Deleted successfully`} icon={`check`} />)
             }}
             href={`${cleanUrl(url)}/${id}`}
             as={`button`}
-            className={`text-green-500 bg-gray-900/75 p-1 rounded`}
+            className={`rounded bg-gray-900/75 p-1 text-green-500`}
           >
-            <CheckIcon className={`w-5 h-5`}/>
+            <CheckIcon className={`h-5 w-5`} />
           </Link>
 
-          <button className={`text-red-500 bg-gray-900/75 p-1 rounded`} type={`button`} onClick={(e) => setOpen(!open)}>
-            <XMarkIcon className={`w-5 h-5`}/>
+          <button className={`rounded bg-gray-900/75 p-1 text-red-500`} type={`button`} onClick={(e) => setOpen(!open)}>
+            <XMarkIcon className={`h-5 w-5`} />
           </button>
         </div>
       )}

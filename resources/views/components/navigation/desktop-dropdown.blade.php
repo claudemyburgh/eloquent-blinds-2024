@@ -61,12 +61,12 @@
                 @elseif($link->slug === 'shutters')
                     <a href="{{ route('categories.show', 'shutters') }}"
                        class="border border-gray-300 dark:border-gray-800 rounded-global overflow-hidden relative isolate group shadow-lg shadow-primary-500/20">
-                        {{--                        <x-svg.shutter class="absolute inset-3 z-10 drop-shadow-hard" />--}}
+                        <x-svg.shutter class="absolute inset-3 z-10 drop-shadow-hard" />
                         <img
                             class="rounded-global mask-image-b mask-image-start-60 transition-all object-center scale-110 group-hover:scale-100"
                             loading="lazy" width="290" height="290"
                             src="{{ Vite::asset('resources/img/shutterguard.webp') }}"
-                            alt="Motion Blinds">
+                            alt="Shutterquard">
                     </a>
                     @foreach($categories->where('slug', '===', 'shutters') as $category)
                         <div class="col-span-2">

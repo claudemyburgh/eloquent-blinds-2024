@@ -45,7 +45,7 @@
                     </span>
                     </a>
                 </div>
-                {{--                <x-taylor-logo/>--}}
+                <x-svg.tylor />
 
             </div>
 

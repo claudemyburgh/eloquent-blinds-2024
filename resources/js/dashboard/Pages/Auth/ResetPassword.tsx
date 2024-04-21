@@ -1,38 +1,36 @@
-import {FormEventHandler, useEffect} from 'react';
-import GuestLayout from '@/dashboard/Layouts/GuestLayout';
-import InputError from '@/dashboard/Components/FormPartials/InputError';
-import InputLabel from '@/dashboard/Components/FormPartials/InputLabel';
-import PrimaryButton from '@/dashboard/Components/Buttons/PrimaryButton';
-import TextInput from '@/dashboard/Components/FormPartials/TextInput';
-import {Head, useForm} from '@inertiajs/react';
+import { FormEventHandler, useEffect } from "react"
+import GuestLayout from "@/dashboard/Layouts/GuestLayout"
+import { InputError, InputLabel, TextInput } from "@/Shared/Components/FormParials"
+import PrimaryButton from "@/dashboard/Components/Buttons/PrimaryButton"
+import { Head, useForm } from "@inertiajs/react"
 
-export default function ResetPassword({token, email}: { token: string, email: string }) {
-  const {data, setData, post, processing, errors, reset} = useForm({
+export default function ResetPassword({ token, email }: { token: string; email: string }) {
+  const { data, setData, post, processing, errors, reset } = useForm({
     token: token,
     email: email,
-    password: '',
-    password_confirmation: '',
-  });
+    password: "",
+    password_confirmation: "",
+  })
 
   useEffect(() => {
     return () => {
-      reset('password', 'password_confirmation');
-    };
-  }, []);
+      reset("password", "password_confirmation")
+    }
+  }, [])
 
   const submit: FormEventHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    post(route('password.store'));
-  };
+    post(route("password.store"))
+  }
 
   return (
     <GuestLayout>
-      <Head title="Reset Password"/>
+      <Head title="Reset Password" />
 
       <form onSubmit={submit}>
         <div>
-          <InputLabel htmlFor="email" value="Email"/>
+          <InputLabel htmlFor="email" value="Email" />
 
           <TextInput
             id="email"
@@ -41,14 +39,14 @@ export default function ResetPassword({token, email}: { token: string, email: st
             value={data.email}
             className="mt-1 block w-full"
             autoComplete="username"
-            onChange={(e) => setData('email', e.target.value)}
+            onChange={(e) => setData("email", e.target.value)}
           />
 
-          <InputError message={errors.email} className="mt-2"/>
+          <InputError message={errors.email} className="mt-2" />
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password" value="Password"/>
+          <InputLabel htmlFor="password" value="Password" />
 
           <TextInput
             id="password"
@@ -58,14 +56,14 @@ export default function ResetPassword({token, email}: { token: string, email: st
             className="mt-1 block w-full"
             autoComplete="new-password"
             isFocused={true}
-            onChange={(e) => setData('password', e.target.value)}
+            onChange={(e) => setData("password", e.target.value)}
           />
 
-          <InputError message={errors.password} className="mt-2"/>
+          <InputError message={errors.password} className="mt-2" />
         </div>
 
         <div className="mt-4">
-          <InputLabel htmlFor="password_confirmation" value="Confirm Password"/>
+          <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
           <TextInput
             type="password"
@@ -73,18 +71,18 @@ export default function ResetPassword({token, email}: { token: string, email: st
             value={data.password_confirmation}
             className="mt-1 block w-full"
             autoComplete="new-password"
-            onChange={(e) => setData('password_confirmation', e.target.value)}
+            onChange={(e) => setData("password_confirmation", e.target.value)}
           />
 
-          <InputError message={errors.password_confirmation} className="mt-2"/>
+          <InputError message={errors.password_confirmation} className="mt-2" />
         </div>
 
-        <div className="flex items-center justify-end mt-4">
+        <div className="mt-4 flex items-center justify-end">
           <PrimaryButton className="ms-4" disabled={processing}>
             Reset Password
           </PrimaryButton>
         </div>
       </form>
     </GuestLayout>
-  );
+  )
 }

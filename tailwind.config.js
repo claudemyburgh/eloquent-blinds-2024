@@ -11,6 +11,11 @@ export default {
     "./resources/js/**/*.{tsx,ts,js,jsx}",
     "./app/View/Components/**/*.php",
   ],
+  safelist: [
+    {
+      pattern: /(splide|pswp)/,
+    },
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -22,6 +27,10 @@ export default {
         secondary: colors.cyan,
         tertiary: colors.yellow,
         gray: colors.slate,
+        tylor: {
+          primary: "#0093A4",
+          secondary: "#464749",
+        },
       },
       width: {
         "square-diagonal": Math.sqrt(2) * 100 + "%",

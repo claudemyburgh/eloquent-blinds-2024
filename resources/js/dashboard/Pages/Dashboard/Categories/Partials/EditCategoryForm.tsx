@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { useForm, usePage } from "@inertiajs/react"
-import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Textarea, TextInput } from "@/dashboard/Components/FormPartials"
+import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Textarea, TextInput } from "@/Shared/Components/FormParials"
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { ToastItem } from "@/dashboard/Components/Alerts"
+
 import { CategoriesListProps, CategoryProps, CounterProps, GalleryProps } from "@/types/datatable"
 import filterObjectsById from "@/lib/filter-object"
+import { ToastItem } from "@/Shared/Components/Alerts"
 
 const EditCategoryForm = () => {
   const { category, categories_list, galleries } = usePage<CategoryProps & CategoriesListProps & GalleryProps & PageProps>().props

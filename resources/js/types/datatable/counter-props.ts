@@ -1,5 +1,6 @@
 export default interface CounterProps {
   slug: number
   body: number
-  excerpt: number
+  excerpt?: number
+  description?: number
 }

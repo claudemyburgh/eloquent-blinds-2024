@@ -1,11 +1,11 @@
-import React from "react";
-import {SelectInput} from "@/dashboard/Components/FormPartials";
+import React from "react"
+import { SelectInput } from "@/Shared/Components/FormParials"
 
 interface Props {
   categories: string
 }
 
-const SelectCategory = ({categories, ...resProps}: Props & any) => {
+const SelectCategory = ({ categories, ...resProps }: Props & any) => {
   return (
     <SelectInput {...resProps} className="mt-1 block w-full text-gray-600 accent-primary-500 focus:accent-primary-500">
       <option value="">None</option>

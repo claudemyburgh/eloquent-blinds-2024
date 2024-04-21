@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { useForm, usePage } from "@inertiajs/react"
-import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Textarea, TextInput } from "@/dashboard/Components/FormPartials"
+import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Textarea, TextInput } from "@/Shared/Components/FormParials"
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { ToastItem } from "@/dashboard/Components/Alerts"
+import { ToastItem } from "resources/js/Shared/Components/Alerts"
 import { CounterProps, GalleryProps } from "@/types/datatable"
 
 const EditGalleryForm = () => {
@@ -13,14 +13,14 @@ const EditGalleryForm = () => {
   const [count, setCount] = useState<CounterProps>({
     body: gallery.body?.length,
     slug: gallery.slug?.length,
-    excerpt: gallery.excerpt?.length,
+    description: gallery.description?.length,
   })
 
   const { data, setData, put, errors, processing, recentlySuccessful } = useForm({
     title: gallery.title || "",
     slug: gallery.slug || "",
     body: gallery.body || "",
-    excerpt: gallery.excerpt || "",
+    description: gallery.description || "",
     live: gallery.live,
   })
 
@@ -65,10 +65,10 @@ const EditGalleryForm = () => {
       </div>
 
       <div>
-        <InputLabel htmlFor="excerpt" value="Excerpt" />
-        <Textarea id="excerpt" value={data.excerpt} onChange={handleFormInput} className="mt-1 block min-h-[100px] w-full" />
-        <CharCounter count={count.excerpt || 0} max={500} />
-        <InputError message={errors.excerpt} className="mt-4" />
+        <InputLabel htmlFor="description" value="Description" />
+        <Textarea id="description" value={data.description} onChange={handleFormInput} className="mt-1 block min-h-[100px] w-full" />
+        <CharCounter count={count.description || 0} max={500} />
+        <InputError message={errors.description} className="mt-4" />
       </div>
       <div>
         <InputLabel htmlFor="body" value="Body" />

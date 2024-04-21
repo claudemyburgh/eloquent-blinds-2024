@@ -1,19 +1,19 @@
 <?php
 
-    namespace App\Http\Resources\Categories;
+namespace App\Http\Resources\Categories;
 
-    use Illuminate\Http\Request;
-    use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-    class CategoryCollection extends ResourceCollection
+class CategoryCollection extends ResourceCollection
+{
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @return array<int|string, mixed>
+     */
+    public function toArray(Request $request): array
     {
-        /**
-         * Transform the resource collection into an array.
-         *
-         * @return array<int|string, mixed>
-         */
-        public function toArray(Request $request): array
-        {
-            return ['data' => $this->collection];
-        }
+        return ['data' => $this->collection];
     }
+}

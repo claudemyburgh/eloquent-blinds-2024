@@ -4,10 +4,10 @@ import React, { useState } from "react"
 import { slugIt, unSlug } from "@/lib/helpers"
 import PrimaryButton from "@/dashboard/Components/Buttons/PrimaryButton"
 import slugify from "slugify"
-import { InputError, InputLabel, SelectCategory, SelectInput, TextInput } from "@/dashboard/Components/FormPartials"
+import { InputError, InputLabel, SelectInput, TextInput } from "@/Shared/Components/FormParials"
 import Modal from "@/dashboard/Components/Modal"
 import { Panel } from "@/dashboard/Components/Panel"
-import SelectStepCategory from "@/dashboard/Components/FormPartials/SelectStepCategory"
+import { SelectStepCategory } from "@/dashboard/Components/FormPartials"
 import { ProductProps } from "@/types/datatable"
 
 const DatatableCreateActionBar = ({ categories }: any) => {

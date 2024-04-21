@@ -1,5 +1,5 @@
-<x-app-layout title="{{ $product->title }}"
-              description="{{ $product->excerpt }}">
+<x-app-layout :title="$product->title"
+              :description="$product->excerpt">
     <x-slot name="seo">
         {{--  HTML Meta Tags--}}
         <meta property="og:title" content="Eloquent Blinds | {{ $product->title }}" />
@@ -9,11 +9,29 @@
         {{--  Twitter Meta Tags --}}
         <meta name="twitter:title" content="Eloquent Blinds | {{ $product->title }}" />
         <meta name="twitter:description"
-              content="" />
+              content="{{ $product->excerpt }}" />
         <meta name="twitter:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
     </x-slot>
 
-    <div class="wrapper pt-24 lg:pt-24 space-y-4">
-        products
-    </div>
+    <section class="space-y-16 py-16 lg:py-32 z-10 wrapper">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 dark:border-gray-800 relative">
+            <div class="relative">
+                <div class="md:sticky md:top-32  space-y-6">
+                    <x-product.media :$product />
+                    <x-product.variants :$product />
+                </div>
+            </div>
+            <div>
+                <x-product.details :$product />
+
+            </div>
+
+
+        </div>
+        <x-shutters-comparison />
+        <x-gallery.section :model="$product" />
+    </section>
+
+
 </x-app-layout>

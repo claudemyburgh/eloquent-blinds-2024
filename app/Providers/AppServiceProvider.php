@@ -33,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
             'gallery' => Gallery::class,
             'variant' => Variant::class,
         ]);
+
     }
 }

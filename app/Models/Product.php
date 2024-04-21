@@ -46,7 +46,7 @@ class Product extends Model implements HasMedia
             $this->addMediaConversion($key)
                 ->format($image['format'])
                 ->blur($image['blur'])
-                ->fit(Fit::Fill, $image['height'], $image['height'])
+                ->fit(Fit::Max, $image['height'], $image['height'])
                 ->nonQueued();
         }
     }

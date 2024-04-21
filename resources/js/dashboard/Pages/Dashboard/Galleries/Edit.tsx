@@ -4,7 +4,6 @@ import { Head } from "@inertiajs/react"
 import React from "react"
 import EditGalleryForm from "@/dashboard/Pages/Dashboard/Galleries/Partials/EditGalleryForm"
 import { ImageDropzone } from "@/dashboard/Components/Upload"
-import LongDrop from "@/dashboard/Components/Dropzone/LongDrop"
 
 export default function Index({ auth, gallery }: PageProps & any) {
   return (
@@ -15,7 +14,6 @@ export default function Index({ auth, gallery }: PageProps & any) {
           <div className="panel">
             <h2 className={`panel-heading`}>Gallery {gallery.title}</h2>
             <ImageDropzone model={gallery} namedRoute={"dashboard.galleries.upload"} />
-            {/*<LongDrop model={gallery} namedRoute={"dashboard.galleries.upload"} />*/}
             <EditGalleryForm />
           </div>
         </div>

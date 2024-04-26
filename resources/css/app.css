@@ -12,23 +12,19 @@
         /* Default is Dark */
         --primary: theme('colors.gray.800');
         --secondary: theme('colors.primary.500');
-        --pswp-bg: var(--secondary);
-        --pswp-placeholder-bg: #222;
-
-
-        --pswp-root-z-index: 100000;
-
-        --pswp-preloader-color: rgba(79, 79, 79, 0.4);
-        --pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);
+        /*--pswp-bg: var(--secondary);*/
+        /*--pswp-placeholder-bg: #222;*/
+        /*--pswp-root-z-index: 100000;*/
+        /*--pswp-preloader-color: rgba(79, 79, 79, 0.4);*/
+        /*--pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);*/
 
         /* defined via js: */
-        --pswp-transition-duration: 333ms;
-
-        --pswp-icon-color: #fff;
-        --pswp-icon-color-secondary: #4f4f4f;
-        --pswp-icon-stroke-color: #4f4f4f;
-        --pswp-icon-stroke-width: 2px;
-        --pswp-error-text-color: var(--pswp-icon-color);
+        /*--pswp-transition-duration: 333ms;*/
+        /*--pswp-icon-color: #fff;*/
+        /*--pswp-icon-color-secondary: #4f4f4f;*/
+        /*--pswp-icon-stroke-color: #4f4f4f;*/
+        /*--pswp-icon-stroke-width: 2px;*/
+        /*--pswp-error-text-color: var(--pswp-icon-color);*/
     }
 
     *::selection {
@@ -77,7 +73,6 @@
 
     .hover-underline {
         @apply hover:underline underline-offset-8 decoration-wavy isolate z-10 decoration-gray-300/10 hover:decoration-primary-500 decoration-1 inline-block relative;
-
     }
 
 
@@ -181,8 +176,24 @@
     }
 
     .pswp__bg {
-        --pswp-bg: theme('colors.primary.500');
+        --pswp-bg: theme('colors.gray.100');
+        --pswp-placeholder-bg: #222;
+        --pswp-root-z-index: 100000;
+        --pswp-preloader-color: rgba(79, 79, 79, 1);
+        --pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);
+        --pswp-icon-color: theme('colors.gray.900');
+
+
+        --pswp-icon-color-secondary: #4f4f4f;
+        --pswp-icon-stroke-color: #4f4f4f;
+        --pswp-icon-stroke-width: 2px;
+        --pswp-error-text-color: theme('colors.red.600');
     }
+
+    .dark .pswp__bg {
+        --pswp-bg: theme('colors.gray.900');
+    }
+
 
     .pswp__custom-caption {
         @apply bg-primary-500/80 text-white max-w-2xl px-8 py-4 absolute left-1/2 -translate-x-1/2 bottom-4 rounded-global inline-flex border border-primary-600 shadow-xl;
@@ -572,6 +583,13 @@
         padding: 1em 0;
         right: .5em;
         top: 0;
+    }
+
+    /*
+    * Styles for react select
+     */
+    .react-select-container {
+        @apply rounded-global bg-yellow-500;
     }
 
 

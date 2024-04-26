@@ -8,7 +8,7 @@ import { InputError, InputLabel, SelectInput, TextInput } from "@/Shared/Compone
 import Modal from "@/dashboard/Components/Modal"
 import { Panel } from "@/dashboard/Components/Panel"
 import { SelectStepCategory } from "@/dashboard/Components/FormPartials"
-import { ProductProps } from "@/types/datatable"
+import { ProductProps, ProductType } from "@/types/datatable"
 
 const DatatableCreateActionBar = ({ categories }: any) => {
   const {
@@ -62,7 +62,8 @@ const DatatableCreateActionBar = ({ categories }: any) => {
         closeModal()
         reset()
       },
-      onError: () => {},
+      onError: () => {
+      },
       preserveState: true,
     })
   }
@@ -82,7 +83,7 @@ const DatatableCreateActionBar = ({ categories }: any) => {
                 ) : column === "product_id" ? (
                   <SelectInput className={"w-full"} id="product_id" name={column} defaultValue={data.product_id} onChange={handleFormInput}>
                     <option>Select Product</option>
-                    {products_list.map((product: ProductProps) => (
+                    {products_list.map((product: Partial<ProductType>) => (
                       <option key={product.id} value={product.id}>
                         {product.title}
                       </option>

@@ -25,7 +25,7 @@
                 <x-navigation.theme-toggle />
                 <x-navigation.mobile-toggle />
             </div>
-            <div id="mobile_close" class="w-full mt-4 lg:hidden space-y-4 font-bold items-center">
+            <div hidden id="mobile_close" class="w-full mt-4 lg:hidden space-y-4 font-bold items-center">
                 @foreach($links as $link)
                     @if($link->route !== 'categories.index')
                         <a

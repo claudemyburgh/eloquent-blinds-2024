@@ -14,7 +14,7 @@ class CategoriesIndexController extends Controller
      */
     public function __invoke(Request $request): View
     {
-        $categories = Category::live()->with('media', 'products.media')->tree()->get()->toTree();
+        $categories = Category::live()->with('media', 'products.media', 'tags')->tree()->get()->toTree();
 
         return view('categories.index', data: [
             'categories' => $categories,

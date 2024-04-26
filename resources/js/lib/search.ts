@@ -53,7 +53,7 @@ async function retrieveSearchResults(query: string): Promise<Fuse.FuseResult<Pro
   const posts = await getProducts()
   //@ts-expect-error
   const fuse = new Fuse(posts.data, {
-    keys: ["title", "category"],
+    keys: ["title", "category", "tags.name.en"],
     includeScore: true,
     shouldSort: true,
     includeMatches: true,

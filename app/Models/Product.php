@@ -14,10 +14,13 @@ use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+use Spatie\Tags\HasTags;
 
-class Product extends Model implements HasMedia
+class Product extends Model implements HasMedia, Searchable
 {
-    use GalleryTrait, HasFactory, InteractsWithMedia, Live, Sluggable, SoftDeletes;
+    use GalleryTrait, HasFactory, HasTags, InteractsWithMedia, Live, Sluggable, SoftDeletes;
 
     protected $fillable = [
         'category_id',
@@ -55,5 +58,10 @@ class Product extends Model implements HasMedia
     {
         $this->addMediaCollection('default')
             ->useFallbackUrl(url(config('app.placeholder')));
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        return new SearchResult($this, $this->title, $this->slug);
     }
 }

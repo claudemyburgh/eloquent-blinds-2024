@@ -4,7 +4,7 @@ import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Tex
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { CategoriesListProps, CounterProps, GalleryProps, ProductProps } from "@/types/datatable"
+import { CategoriesListProps, CounterProps, GalleryProps, GalleryType, ProductProps } from "@/types/datatable"
 import SelectStepCategory from "@/dashboard/Components/FormPartials/SelectStepCategory"
 import { ToastItem } from "@/Shared/Components/Alerts"
 
@@ -26,7 +26,7 @@ const EditProductForm = () => {
     live: product.live,
     popular: product.popular,
 
-    gallery: product["galleries"][0]?.id || "",
+    gallery: product["galleries"] || "",
   })
 
   const handleFormSubmit = (e: any) => {
@@ -89,9 +89,9 @@ const EditProductForm = () => {
 
       <div>
         <InputLabel htmlFor="gallery" value="Gallery" />
-        <SelectInput showValue={true} id={`gallery`} name={`gallery`} className={`mt-1 w-full`} value={data.gallery} onChange={handleFormInput}>
+        <SelectInput showValue={true} id={`gallery`} name={`gallery`} className={`mt-1 w-full`} value={data.gallery as any} onChange={handleFormInput}>
           <option value="">Select a gallery</option>
-          {(galleries as unknown as any).map((gal: any) => (
+          {(galleries as unknown as GalleryType[]).map((gal: any) => (
             <option key={gal.id} value={gal.id}>
               {gal.title}
             </option>

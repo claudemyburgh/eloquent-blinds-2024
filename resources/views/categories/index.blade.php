@@ -21,6 +21,7 @@
                     <h1 class="col-span-12 heading-1 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
                         {{ $title }}
                     </h1>
+
                     <article class="prose prose-lg dark:prose-invert my-8">
                         <p>Discover a world of stunning blinds as you explore our diverse product categories. From
                             timeless classics to contemporary designs, our curated selection offers unparalleled style
@@ -34,6 +35,18 @@
                         <header class="col-span-12">
                             <h3 class="heading-3"><a class="hover-underline" href="{{ route('categories.show', $category) }}">{{ $category->title }}</a></h3>
                         </header>
+                        @if($category->tags->count())
+                            <div class="col-span-12 -mt-4">
+                                <ul class="flex space-x-1">
+                                    @foreach($category->tags as $tag)
+                                        <li>
+                                            <a class="bg-tertiary-100 border border-tertiary-600 hover:bg-tertiary-200 text-xs text-tertiary-600 px-2 py-0.5 rounded-global"
+                                               href="#">{{ $tag->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         @if($category->products->count())
                             @foreach($category->products as $product)
                                 <x-product.card class="col-span-6 md:col-span-4 lg:col-span-3" :$product

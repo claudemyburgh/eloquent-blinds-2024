@@ -5,12 +5,12 @@ import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
 
-import { CategoriesListProps, CategoryProps, CounterProps, GalleryProps } from "@/types/datatable"
+import { CategoriesListProps, CategoryProps, CategoryType, CounterProps, GalleryProps } from "@/types/datatable"
 import filterObjectsById from "@/lib/filter-object"
 import { ToastItem } from "@/Shared/Components/Alerts"
 
 const EditCategoryForm = () => {
-  const { category, categories_list, galleries } = usePage<CategoryProps & CategoriesListProps & GalleryProps & PageProps>().props
+  const { category, categories_list, galleries } = usePage<CategoryType & CategoriesListProps & GalleryProps & PageProps>().props
 
   const [count, setCount] = useState<CounterProps>({
     body: category.body?.length,
@@ -26,8 +26,7 @@ const EditCategoryForm = () => {
     excerpt: category.excerpt || "",
     live: category.live,
     popular: category.popular,
-    //@ts-expect-error
-    gallery: category["galleries"][0]?.id || "",
+    galleries: category["galleries"] || [],
   })
 
   const handleFormSubmit = (e: any) => {
@@ -96,8 +95,8 @@ const EditCategoryForm = () => {
       </div>
 
       <div>
-        <InputLabel htmlFor="gallery" value="Gallery" />
-        <SelectInput showValue={true} id={`gallery`} name={`gallery`} className={`mt-1 w-full`} value={data.gallery} onChange={handleFormInput}>
+        <InputLabel htmlFor="galleries" value="Gallery" />
+        <SelectInput showValue={true} id={`galleries`} name={`galleries[]`} className={`mt-1 w-full`} value={data.galleries as any} onChange={handleFormInput}>
           <option value="">Select a gallery</option>
           {(galleries as unknown as any).map((gal: any) => (
             <option key={gal.id} value={gal.id}>
@@ -105,7 +104,7 @@ const EditCategoryForm = () => {
             </option>
           ))}
         </SelectInput>
-        <InputError message={errors.gallery} className="mt-2" />
+        <InputError message={errors.galleries} className="mt-2" />
       </div>
 
       <div className="grid grid-cols-2 gap-6">

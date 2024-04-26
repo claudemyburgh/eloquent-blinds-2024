@@ -4,11 +4,11 @@ import { CharCounter, InputError, InputLabel, SaveSubmitButton, SelectInput, Tex
 import { PageProps } from "@/types"
 import { slugIt } from "@/lib/helpers"
 import toast from "react-hot-toast"
-import { CounterProps, GalleryProps } from "@/types/datatable"
+import { CounterProps, GalleryType } from "@/types/datatable"
 import { ToastItem } from "@/Shared/Components/Alerts"
 
 const EditGalleryForm = () => {
-  const { gallery } = usePage<GalleryProps & PageProps>().props
+  const { gallery } = usePage<GalleryType & PageProps>().props
 
   const [count, setCount] = useState<CounterProps>({
     body: gallery.body?.length,

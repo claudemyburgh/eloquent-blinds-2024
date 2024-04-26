@@ -1,5 +1,5 @@
-import React, {forwardRef, SelectHTMLAttributes, useEffect, useImperativeHandle, useRef} from "react"
-import {twMerge} from "tailwind-merge"
+import React, { forwardRef, SelectHTMLAttributes, useEffect, useImperativeHandle, useRef } from "react"
+import { twMerge } from "tailwind-merge"
 
 interface Props {
   isFocused?: boolean
@@ -13,7 +13,7 @@ type OptionProp = {
 }
 
 export default forwardRef(function SelectInput(
-  {className = "", isFocused = false, children, showValue = false, options = [], ...props}: SelectHTMLAttributes<HTMLSelectElement> & Props,
+  { className = "", isFocused = false, children, showValue = false, options = [], ...props }: SelectHTMLAttributes<HTMLSelectElement> & Props,
   ref
 ) {
   const localRef = useRef<HTMLSelectElement>(null)
@@ -32,7 +32,7 @@ export default forwardRef(function SelectInput(
     <select
       {...props}
       className={twMerge(
-        "border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-primary-500 dark:focus:border-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 rounded-md shadow-sm text-gray-600",
+        "rounded-md border-gray-300 text-gray-600 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-primary-600 dark:focus:ring-primary-600",
         className
       )}
       ref={localRef}

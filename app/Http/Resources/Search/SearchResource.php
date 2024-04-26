@@ -18,6 +18,7 @@ class SearchResource extends JsonResource
             'title' => $this->title.' '.$this->category->title,
             'url' => route('products.show', [$this->category->slug, $this->slug]),
             'category' => $this->category->title,
+            'tags' => $this->tags,
         ];
     }
 }

@@ -14,7 +14,7 @@ class SearchResults extends Controller
      */
     public function __invoke(Request $request): SearchCollection
     {
-        $data = Product::with('category')->get();
+        $data = Product::with('category.tags')->get();
 
         return new SearchCollection($data);
     }

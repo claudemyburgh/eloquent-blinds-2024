@@ -15,12 +15,13 @@ use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Tags\HasTags;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 #[ObservedBy([CategoryObserver::class])]
 class Category extends Model implements HasMedia
 {
-    use GalleryTrait, HasFactory, HasRecursiveRelationships, InteractsWithMedia, Live, Sluggable, SoftDeletes;
+    use GalleryTrait, HasFactory, HasRecursiveRelationships, HasTags, InteractsWithMedia, Live, Sluggable, SoftDeletes;
 
     protected $fillable = [
         'uuid',

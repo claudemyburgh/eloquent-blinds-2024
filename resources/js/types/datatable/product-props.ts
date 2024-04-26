@@ -1,7 +1,7 @@
 import { GalleryProps } from "@/types/datatable/index"
 
 export type ProductType = {
-  id?: number
+  id: number
   title: string
   slug: string
   category_id: string
@@ -12,6 +12,6 @@ export type ProductType = {
   galleries?: GalleryProps[]
 }
 
-export interface ProductProps {
+export type ProductProps = {
   product: ProductType
 }

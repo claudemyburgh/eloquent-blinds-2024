@@ -51,11 +51,12 @@
 
         </div>
         <div
-            class="mx-auto opacity-40 md:opacity-100 flex max-w-full mt-24 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-32 absolute lg:relative -top-20 lg:top-0 inset-x-0 shadow-2xl mask-image-b lg:mask-image-start-100
+            class="mx-auto opacity-40 md:opacity-100 flex max-w-full mt-24 lg:ml-10 lg:mt-0 lg:mr-0  lg:max-w-none lg:flex-none xl:ml-32 absolute lg:relative -top-20 lg:top-0 inset-x-0 shadow-2xl mask-image-b
+            lg:mask-image-start-100
             shadow-black z-0">
-            <mouse-spotlight data-mouse-light="rgba(250,250,250,.5)" class="bg-gradient-to-br block from-primary-500 to-secondary-400 p-[2px] rounded-global h-[615px] w-[1037px]">
+            <mouse-spotlight data-mouse-light="rgba(250,250,250,.5)" class="bg-gradient-to-br block  from-primary-500 to-secondary-400 p-[2px] rounded-global h-[615px] w-[1037px]">
                 <img width="1037" height="613" loading="eager"
-                     class="w-full object-cover max-w-full max-h-full rounded-global block"
+                     class="w-full object-cover max-w-full max-h-full rounded-global  block"
                      src="{{ Vite::asset('resources/img/hero.webp') }}" alt="hero blind image">
             </mouse-spotlight>
         </div>

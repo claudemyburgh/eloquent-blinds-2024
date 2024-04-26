@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $appends = [
+        'gravatar',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -31,6 +35,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected function getGravatarAttribute(): string
+    {
+        return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?d=mp&s=120';
+
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -42,6 +52,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'gravatar' => 'string',
         ];
     }
 }

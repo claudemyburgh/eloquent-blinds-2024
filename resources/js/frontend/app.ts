@@ -10,7 +10,7 @@ import "@/frontend/react-form"
 import PhotoSwipeLightbox from "photoswipe/lightbox"
 import "photoswipe/style.css"
 
-import.meta.glob(["../img/**/*.{webp,png,svg,jpeg,jpg}"])
+import.meta.glob(["../../img/**/*.{webp,png,svg,jpeg,jpg}"])
 
 const elms = document.getElementsByClassName("marquee-ticker")
 if (elms.length > 0) {

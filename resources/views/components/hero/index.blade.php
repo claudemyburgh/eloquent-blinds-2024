@@ -57,7 +57,7 @@
             <mouse-spotlight data-mouse-light="rgba(250,250,250,.5)" class="bg-gradient-to-br block  from-primary-500 to-secondary-400 p-[2px] rounded-global h-[615px] w-[1037px]">
                 <img width="1037" height="613" loading="eager"
                      class="w-full object-cover max-w-full max-h-full rounded-global  block"
-                     src="{{ Vite::asset('/resources/img/hero.webp') }}" alt="hero blind image">
+                     src="{{ Vite::asset('resources/img/hero.webp') }}" alt="hero blind image">
             </mouse-spotlight>
         </div>
     </div>

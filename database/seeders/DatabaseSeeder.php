@@ -1,24 +1,23 @@
 <?php
 
-    namespace Database\Seeders;
+namespace Database\Seeders;
 
-    use Illuminate\Database\Seeder;
+use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-    class DatabaseSeeder extends Seeder
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
     {
-        /**
-         * Seed the application's database.
-         */
-        public function run(): void
-        {
 
-
-            $this->call([
-                UserSeeder::class,
-                CategorySeeder::class,
-                ProductSeeder::class,
-            ]);
-        }
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            ProductSeeder::class,
+        ]);
     }
+}

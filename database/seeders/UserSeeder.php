@@ -19,7 +19,7 @@
 
             User::factory()->create([
                 'name' => $claude['name'],
-                'email' => $claude['name'],
+                'email' => $claude['email'],
                 'password' => Hash::make($claude['password']),
             ]);
 

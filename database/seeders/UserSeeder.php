@@ -25,7 +25,7 @@
 
             User::factory()->create([
                 'name' => $xavier['name'],
-                'email' => $xavier['name'],
+                'email' => $xavier['email'],
                 'password' => Hash::make($xavier['password']),
             ]);
 

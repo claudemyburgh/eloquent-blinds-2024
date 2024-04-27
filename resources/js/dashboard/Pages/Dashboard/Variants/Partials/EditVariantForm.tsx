@@ -44,19 +44,19 @@ const EditVariantForm = () => {
     <form className={`mt-6 space-y-6`} onSubmit={handleFormSubmit}>
       <div>
         <InputLabel htmlFor="name" value="Name" />
-        <TextInput id="name" value={data.name} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
+        <TextInput id="name" name="title" value={data.name} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
         <InputError message={errors.name} className="mt-2" />
       </div>
 
       <div>
         <InputLabel htmlFor="code" value="Code" />
-        <TextInput id="code" value={data.code} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
+        <TextInput id="code" name="code" value={data.code} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
         <InputError message={errors.code} className="mt-2" />
       </div>
 
       <div>
         <InputLabel htmlFor="product_id" value="Product" />
-        <SelectInput id="product_id" defaultValue={data.product_id} onChange={handleFormInput} className="mt-1 block w-full">
+        <SelectInput id="product_id" name="product_id" defaultValue={data.product_id} onChange={handleFormInput} className="mt-1 block w-full">
           <option value="">None</option>
           {products_list &&
             (products_list as unknown as any[]).map((product: { id: number; title: string }) => (

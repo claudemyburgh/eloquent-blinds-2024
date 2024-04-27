@@ -54,25 +54,25 @@ const EditGalleryForm = () => {
     <form className={`mt-6 space-y-6`} onSubmit={handleFormSubmit}>
       <div>
         <InputLabel htmlFor="title" value="Title" />
-        <TextInput id="title" value={data.title} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
+        <TextInput id="title" name="title" value={data.title} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
         <InputError message={errors.title} className="mt-2" />
       </div>
       <div>
         <InputLabel htmlFor="slug" value="Slug" />
-        <TextInput id="slug" value={slugIt(data.slug)} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
+        <TextInput id="slug" name="slug" value={slugIt(data.slug)} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
         <CharCounter count={count.slug} max={100} />
         <InputError message={errors.slug} className="mt-4" />
       </div>
 
       <div>
         <InputLabel htmlFor="description" value="Description" />
-        <Textarea id="description" value={data.description} onChange={handleFormInput} className="mt-1 block min-h-[100px] w-full" />
+        <Textarea id="description" name="desciption" value={data.description} onChange={handleFormInput} className="mt-1 block min-h-[100px] w-full" />
         <CharCounter count={count.description || 0} max={500} />
         <InputError message={errors.description} className="mt-4" />
       </div>
       <div>
         <InputLabel htmlFor="body" value="Body" />
-        <Textarea id="body" value={data.body} onChange={handleFormInput} className="mt-1 block min-h-[200px] w-full" />
+        <Textarea id="body" name="body" value={data.body} onChange={handleFormInput} className="mt-1 block min-h-[200px] w-full" />
         <CharCounter count={count.body || 0} max={2500} />
         <InputError message={errors.body} className="mt-4" />
       </div>

@@ -30,7 +30,9 @@
 <body class="font-sans antialiased overflow-x-clip bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 accent-primary-300 md:accent-primary-500">
 <x-partials.seo.google.tag-manager-body />
 <x-partials.skip-to-main />
+<x-contact.session />
 <x-pattern.grid class="h-1/3 " />
+
 <x-navigation />
 
 <main id="main" class="relative z-10 min-h-[20rem]">

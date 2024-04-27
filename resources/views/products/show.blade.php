@@ -24,6 +24,7 @@
             </div>
             <div>
                 <x-product.details :$product />
+          
                 <div id="quote-form" data-product="{{ $product->title }}"></div>
             </div>
 

@@ -26,7 +26,8 @@ const EditCategoryForm = () => {
     excerpt: category.excerpt || "",
     live: category.live,
     popular: category.popular,
-    galleries: category["galleries"] || [],
+    //@ts-expect-error
+    galleries: category["galleries"][0]?.id || "",
   })
 
   const handleFormSubmit = (e: any) => {
@@ -59,18 +60,18 @@ const EditCategoryForm = () => {
     <form className={`mt-6 space-y-6`} onSubmit={handleFormSubmit}>
       <div>
         <InputLabel htmlFor="title" value="Title" />
-        <TextInput id="title" value={data.title} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
+        <TextInput id="title" name="title" value={data.title} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
         <InputError message={errors.title} className="mt-2" />
       </div>
       <div>
         <InputLabel htmlFor="slug" value="Slug" />
-        <TextInput id="slug" value={slugIt(data.slug)} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
+        <TextInput id="slug" name="slug" value={slugIt(data.slug)} onChange={handleFormInput} type="text" className="mt-1 block w-full" />
         <CharCounter count={count.slug} max={100} />
         <InputError message={errors.slug} className="mt-4" />
       </div>
       <div>
         <InputLabel htmlFor="parent_id" value="Parent Id" />
-        <SelectInput id="parent_id" defaultValue={data.parent_id} onChange={handleFormInput} className="mt-1 block w-full">
+        <SelectInput id="parent_id" name="parent_id" defaultValue={data.parent_id} onChange={handleFormInput} className="mt-1 block w-full">
           <option value="">None</option>
           {categories_list &&
             (filterObjectsById(categories_list, category.id) as unknown as any[]).map((cat) => (
@@ -83,20 +84,20 @@ const EditCategoryForm = () => {
       </div>
       <div>
         <InputLabel htmlFor="excerpt" value="Excerpt" />
-        <Textarea id="excerpt" value={data.excerpt} onChange={handleFormInput} className="mt-1 block min-h-[100px] w-full" />
+        <Textarea id="excerpt" name="excerpt" value={data.excerpt} onChange={handleFormInput} className="mt-1 block min-h-[100px] w-full" />
         <CharCounter count={count.excerpt || 0} max={500} />
         <InputError message={errors.excerpt} className="mt-4" />
       </div>
       <div>
         <InputLabel htmlFor="body" value="Body" />
-        <Textarea id="body" value={data.body} onChange={handleFormInput} className="mt-1 block min-h-[200px] w-full" />
+        <Textarea id="body" name="body" value={data.body} onChange={handleFormInput} className="mt-1 block min-h-[200px] w-full" />
         <CharCounter count={count.body || 0} max={2500} />
         <InputError message={errors.body} className="mt-4" />
       </div>
 
       <div>
         <InputLabel htmlFor="galleries" value="Gallery" />
-        <SelectInput showValue={true} id={`galleries`} name={`galleries[]`} className={`mt-1 w-full`} value={data.galleries as any} onChange={handleFormInput}>
+        <SelectInput showValue={true} id={`galleries`} name={`galleries`} className={`mt-1 w-full`} value={data.galleries as any} onChange={handleFormInput}>
           <option value="">Select a gallery</option>
           {(galleries as unknown as any).map((gal: any) => (
             <option key={gal.id} value={gal.id}>

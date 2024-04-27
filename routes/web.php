@@ -8,6 +8,7 @@
     use App\Http\Controllers\Frontend\Legal\WarrantsIndexController;
     use App\Http\Controllers\Frontend\ProductShowController;
     use App\Http\Controllers\Frontend\QuoteIndexController;
+    use App\Http\Controllers\Frontend\QuoteSendController;
     use App\Http\Controllers\GalleriesIndexController;
     use App\Http\Controllers\ProfileController;
     use Illuminate\Support\Facades\Route;
@@ -19,6 +20,7 @@
     Route::get('categories', CategoriesIndexController::class)->name('categories.index');
     Route::get('faqs', FAQIndexController::class)->name('faqs.index');
     Route::get('quote', QuoteIndexController::class)->name('quote.index');
+    Route::post('quote', QuoteSendController::class)->name('quote.send');
     Route::get('categories/{category:slug}', CategoriesShowController::class)->name('categories.show');
     Route::get('{category:slug}/{product:slug}', ProductShowController::class)->name('products.show');
     Route::get('privacy-policy', PrivacyPolicyIndexController::class)->name('legal.privacy-policy');

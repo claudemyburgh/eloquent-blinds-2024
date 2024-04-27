@@ -19,7 +19,6 @@
             <x-contact.section />
         </div>
         <div class="w-full ">
-            {{--            <x-contact.form />--}}
             <div id="quote-form"></div>
         </div>
     </div>

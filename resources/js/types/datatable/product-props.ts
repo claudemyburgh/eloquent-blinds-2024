@@ -9,7 +9,11 @@ export type ProductType = {
   body: string
   live: string
   popular: string
-  galleries?: GalleryProps[]
+  guarantee: string
+  galleries: GalleryProps[]
+  product_range: string
+  supplier: string
+  supplier_code: string
 }
 
 export type ProductProps = {

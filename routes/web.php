@@ -17,13 +17,14 @@
 
     Route::get('/', HomePageIndexController::class)->name('home');
     Route::get('categories', CategoriesIndexController::class)->name('categories.index');
+    Route::get('faqs', FAQIndexController::class)->name('faqs.index');
+    Route::get('quote', QuoteIndexController::class)->name('quote.index');
     Route::get('categories/{category:slug}', CategoriesShowController::class)->name('categories.show');
     Route::get('{category:slug}/{product:slug}', ProductShowController::class)->name('products.show');
     Route::get('privacy-policy', PrivacyPolicyIndexController::class)->name('legal.privacy-policy');
     Route::get('warrants', WarrantsIndexController::class)->name('legal.warrants');
     Route::get('galleries', GalleriesIndexController::class)->name('galleries.index');
-    Route::get('faqs', FAQIndexController::class)->name('faqs.index');
-    Route::get('quote', QuoteIndexController::class)->name('quote.index');
+
 //    Route::get('tags', TagsIndexController::class)->name('tags.index');
 
     Route::middleware('auth')->group(function () {

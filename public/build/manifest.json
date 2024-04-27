@@ -171,7 +171,7 @@
     "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-BCqdUp5n.css",
+    "file": "assets/app-BLfsFvvS.css",
     "src": "resources/js/dashboard-app.tsx"
   },
   "resources/img/alu-blinds.webp": {
@@ -283,7 +283,7 @@
     "src": "resources/img/zebra-blinds.webp"
   },
   "resources/js/dashboard-app.tsx": {
-    "file": "assets/dashboard-app-odlJwq_E.js",
+    "file": "assets/dashboard-app-CSpVI5uI.js",
     "name": "dashboard-app",
     "src": "resources/js/dashboard-app.tsx",
     "isEntry": true,
@@ -313,7 +313,7 @@
       "resources/js/dashboard/Pages/Profile/Partials/UpdateProfileInformationForm.tsx"
     ],
     "css": [
-      "assets/app-BCqdUp5n.css"
+      "assets/app-BLfsFvvS.css"
     ]
   },
   "resources/js/dashboard/Pages/Auth/ConfirmPassword.tsx": {
@@ -592,7 +592,7 @@
     ]
   },
   "resources/js/dashboard/Pages/Datatables/Index.tsx": {
-    "file": "assets/Index-DH6JDzgx.js",
+    "file": "assets/Index-B76_uOO4.js",
     "name": "Index",
     "src": "resources/js/dashboard/Pages/Datatables/Index.tsx",
     "isDynamicEntry": true,

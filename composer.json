@@ -21,6 +21,7 @@
         "spatie/laravel-sluggable": "^3.6",
         "spatie/laravel-tags": "*",
         "spatie/menu": "^3.2",
+        "spatie/laravel-sitemap": "^7.2.0",
         "staudenmeir/laravel-adjacency-list": "^1.21",
         "tightenco/ziggy": "^2.0"
     },

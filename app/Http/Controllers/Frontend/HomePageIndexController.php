@@ -17,7 +17,7 @@
         {
             $cat = Category::find(1)->with('media')->first();
 
-            return $cat->getFirstMediaUrl();
+            return $cat->getFirstMediaUrl('default', 'thumb');
 
 
             return view('home', [

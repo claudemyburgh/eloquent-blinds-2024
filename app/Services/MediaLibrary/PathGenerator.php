@@ -38,9 +38,8 @@
 
         private function setFolderPermissions($path): void
         {
-            $folderPath = dirname($path);
-
-            chmod($folderPath, 0755);
+//            chmod($path, 0755);
+            
         }
 
         /*

@@ -79,21 +79,21 @@
             @endif
 
 
-            {{--            @if($descendants->descendants->count())--}}
-            {{--                <div class="grid grid-cols-12 gap-6">--}}
-            {{--                    <div class="col-span-12">--}}
-            {{--                        <h3 class="heading-3 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">--}}
-            {{--                            All products in {{ $category->title }}--}}
-            {{--                        </h3>--}}
-            {{--                    </div>--}}
-            {{--                    @foreach($descendants->descendants as $descendant)--}}
-            {{--                        @foreach($descendant->products as $product)--}}
-            {{--                            <x-product.card class="col-span-6 md:col-span-4 lg:col-span-3" :$product--}}
-            {{--                                            route="{{ route('products.show', [$descendant, $product]) }}" />--}}
-            {{--                        @endforeach--}}
-            {{--                    @endforeach--}}
-            {{--                </div>--}}
-            {{--            @endif--}}
+            @if($descendants->descendants->count())
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12">
+                        <h3 class="heading-3 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
+                            All products in {{ $category->title }}
+                        </h3>
+                    </div>
+                    @foreach($descendants->descendants as $descendant)
+                        @foreach($descendant->products as $product)
+                            <x-product.card class="col-span-6 md:col-span-4 lg:col-span-3" :$product
+                                            route="{{ route('products.show', [$descendant, $product]) }}" />
+                        @endforeach
+                    @endforeach
+                </div>
+            @endif
         </div>
         <x-gallery.section :model="$category" class="wrapper" />
 

@@ -39,7 +39,7 @@
         private function setFolderPermissions($path): void
         {
 //            chmod($path, 0755);
-            
+
         }
 
         /*

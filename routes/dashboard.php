@@ -1,5 +1,6 @@
 <?php
 
+    use App\Http\Controllers\Dashboard\ActionsController;
     use App\Http\Controllers\Dashboard\DashboardIndexController;
     use App\Http\Controllers\Datatables\CategoriesDatatableController;
     use App\Http\Controllers\Datatables\ClientDatatableController;
@@ -28,4 +29,10 @@
 
         // For all media deletion
         Route::delete('{media}', ImageDestroyController::class)->name('media.delete');
+
+        // For action
+        Route::post('/sitemap', [ActionsController::class, 'sitemap'])->name('action.sitemap');
+        Route::post('/cache-clear', [ActionsController::class, 'cache_clear'])->name('action.cache_clear');
+        Route::post('/view-clear', [ActionsController::class, 'view_clear'])->name('action.view_clear');
+        Route::post('/image-clean', [ActionsController::class, 'image_clean'])->name('action.image_clean');
     });

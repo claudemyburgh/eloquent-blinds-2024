@@ -1,16 +1,6 @@
-<x-app-layout :title="$product->title"
-              :description="$product->excerpt">
+<x-app-layout>
     <x-slot name="seo">
-        {{--  HTML Meta Tags--}}
-        <meta property="og:title" content="Eloquent Blinds | {{ $product->title }}" />
-        <meta property="og:description"
-              content="{{ $product->excerpt }}" />
-        <meta property="og:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
-        {{--  Twitter Meta Tags --}}
-        <meta name="twitter:title" content="Eloquent Blinds | {{ $product->title }}" />
-        <meta name="twitter:description"
-              content="{{ $product->excerpt }}" />
-        <meta name="twitter:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
+        <x-seo-meta :$meta />
     </x-slot>
 
     <section class="space-y-16 py-16 lg:py-32 z-10 wrapper">
@@ -24,7 +14,7 @@
             </div>
             <div>
                 <x-product.details :$product />
-          
+
                 <div id="quote-form" data-product="{{ $product->title }}"></div>
             </div>
 

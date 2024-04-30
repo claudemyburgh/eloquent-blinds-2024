@@ -2,19 +2,18 @@
 
     namespace App\View\Components;
 
-    use App\Services\Seo\Meta;
     use Closure;
     use Illuminate\Contracts\View\View;
     use Illuminate\View\Component;
 
-    class AppLayout extends Component
+    class SeoMeta extends Component
     {
         /**
          * Create a new component instance.
          */
-        public function __construct(public array $meta = [], public $seo = null)
+        public function __construct(public ?array $meta = [])
         {
-            $this->meta = Meta::render();
+
         }
 
         /**
@@ -22,6 +21,6 @@
          */
         public function render(): View|Closure|string
         {
-            return view('layouts.app');
+            return view('layouts.partials.seo-meta');
         }
     }

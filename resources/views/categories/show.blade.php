@@ -1,16 +1,6 @@
-<x-app-layout :title="$category->title">
-
+<x-app-layout>
     <x-slot name="seo">
-        {{--  HTML Meta Tags--}}
-        <meta property="og:title" content="Eloquent Blinds | {{$category->title }}" />
-        <meta property="og:description"
-              content="{{ $category->excerpt }}" />
-        <meta property="og:image" content="{{ $category->getFirstMediaUrl('default', 'card') }}" />
-        {{--  Twitter Meta Tags --}}
-        <meta name="twitter:title" content="Eloquent Blinds | {{$category->title }}" />
-        <meta name="twitter:description"
-              content="{{ $category->excerpt }}" />
-        <meta name="twitter:image" content="{{ $category->getFirstMediaUrl('default', 'card')}}" />
+        <x-seo-meta :$meta />
     </x-slot>
 
     <section class="relative">
@@ -77,6 +67,7 @@
                     </div>
                 </div>
             @endif
+
 
 
             @if($descendants->descendants->count())

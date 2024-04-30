@@ -2,18 +2,6 @@
 @php($description = "Massive list of tags to explore")
 
 <x-app-layout :$title :$description>
-    <x-slot name="seo">
-        {{--  HTML Meta Tags--}}
-        <meta property="og:title" content="Eloquent Blinds | {{ $title }}" />
-        <meta property="og:description"
-              content="{{ $description }}" />
-        <meta property="og:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
-        {{--  Twitter Meta Tags --}}
-        <meta name="twitter:title" content="Eloquent Blinds | {{ $title }}" />
-        <meta name="twitter:description"
-              content="{{ $description }}" />
-        <meta name="twitter:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
-    </x-slot>
 
     <div class="wrapper pt-24 lg:pt-24 space-y-4">
         <div class="grid md:grid-cols-2 md:divide-x md:divide-dashed md:divide-gray-900/10 md:dark:divide-gray-500/10">

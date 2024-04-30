@@ -7,19 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#0284c7" />
     <link rel="canonical" href="{{ URL::current()}}" />
-    <title>@isset($title)
-            {{ $title }} |
-        @endisset {{ config('app.name', 'Eloquent Blinds') }} </title>
-    <meta name="description" content="{{ $description }}" />
+    
     <x-partials.seo.favicon />
-    <meta property="fb:app_id" content="{{ config('social.facebook.app_id') }}" />
-    {{--  HTML Meta Tags--}}
-    <meta property="og:url" content="{{  URL::current() }}" />
-    <meta property="og:type" content="website" />
-    {{--  Twitter Meta Tags --}}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="eloquentblinds.co.za" />
-    <meta property="twitter:url" content="{{ URL::current() }}" />
     {{ $seo }}
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -38,6 +27,7 @@
 <main id="main" class="relative z-10 min-h-[20rem]">
     {{ $slot }}
 </main>
+
 
 <x-cta.blinds />
 <x-marquee.ticker>

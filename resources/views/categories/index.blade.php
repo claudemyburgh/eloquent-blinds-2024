@@ -1,25 +1,14 @@
-@php($title = "Categories")
-@php($description = "Discover a world of stunning blinds as you explore our diverse product categories.")
-
-<x-app-layout :$title :$description>
+<x-app-layout>
     <x-slot name="seo">
-        {{--  HTML Meta Tags--}}
-        <meta property="og:title" content="Eloquent Blinds | {{ $title }}" />
-        <meta property="og:description"
-              content="Discover a world of stunning blinds as you explore our diverse product categories. From timeless classics to contemporary designs, our curated selection offers unparalleled style and functionality." />
-        <meta property="og:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
-        {{--  Twitter Meta Tags --}}
-        <meta name="twitter:title" content="Eloquent Blinds | {{ $title }}" />
-        <meta name="twitter:description"
-              content="Discover a world of stunning blinds as you explore our diverse product categories. From timeless classics to contemporary designs, our curated selection offers unparalleled style and functionality." />
-        <meta name="twitter:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
+        <x-seo-meta :$meta />
     </x-slot>
+
     <section class="relative">
         <div class="wrapper py-24 lg:py-32 space-y-16">
             <div class="lg:flex">
                 <div class="w-full pr-6">
                     <h1 class="col-span-12 heading-1 text-shadow-[5] text-shadow-primary-500/10 dark:text-shadow-black">
-                        {{ $title }}
+                        {{ $meta['title'] }}
                     </h1>
                     <article class="prose prose-lg dark:prose-invert my-8">
                         <p>Discover a world of stunning blinds as you explore our diverse product categories. From

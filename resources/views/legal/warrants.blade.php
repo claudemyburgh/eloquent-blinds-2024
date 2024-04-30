@@ -1,20 +1,8 @@
-@php($title = 'Warrants')
-@php($description = "Warrants description")
-
-<x-app-layout title="{{ $title }}"
-              description="{{ $description }}">
+<x-app-layout>
     <x-slot name="seo">
-        {{--  HTML Meta Tags--}}
-        <meta property="og:title" content="Eloquent Blinds | {{ $title }} " />
-        <meta property="og:description"
-              content="{{ $description }}" />
-        <meta property="og:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
-        {{--  Twitter Meta Tags --}}
-        <meta name="twitter:title" content="Eloquent Blinds | {{ $title }} " />
-        <meta name="twitter:description"
-              content="{{ $description }}" />
-        <meta name="twitter:image" content="{{ config('app.url') . "/img/hero.webp" }}" />
+        <x-seo-meta :$meta />
     </x-slot>
+
     <section class="prose dark:prose-invert mx-auto py-32 relative z-10 max-w-2xl">
         <section>
             <h1>Warrants</h1>

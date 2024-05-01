@@ -196,7 +196,7 @@
 
 
     .pswp__custom-caption {
-        @apply bg-primary-500/80 text-white max-w-2xl px-8 py-4 absolute left-1/2 -translate-x-1/2 bottom-4 rounded-global inline-flex border border-primary-600 shadow-xl;
+        @apply bg-primary-500/10 backdrop-blur-lg text-white text-shadow max-w-2xl px-8 py-4 absolute left-1/2 -translate-x-1/2 bottom-4 rounded-global inline-flex border border-white shadow-xl;
 
     }
 

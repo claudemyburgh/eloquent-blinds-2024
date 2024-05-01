@@ -23,7 +23,7 @@
 
             </section>
         </div>
-        <div class="flex flex-wrap">
+        <div class="w-full ">
             @foreach($galleries as $gallery)
                 <x-gallery.media :$gallery />
             @endforeach

@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#0284c7" />
     <link rel="canonical" href="{{ URL::current()}}" />
-    
     <x-partials.seo.favicon />
     {{ $seo }}
     <!-- Fonts -->

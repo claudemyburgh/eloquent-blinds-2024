@@ -15,6 +15,6 @@
 <meta property="twitter:url" content="{{ URL::current() }}" />
 <meta name="twitter:title" content="Eloquent Blinds | {{ $meta['title']  ?? 'Supplier and installer of Shutters and Blinds.' }}">
 <meta name="twitter:description" content="{{ $meta['description']  }}">
-<meta name="twitter:image" content="{{ $meta['image'] ?? Vite::asset('resources/img/hero.webp') }}">
+<meta name="twitter:image" content="{{ $meta['image'] ?? Vite::asset('resources/img/meta/eloquent.jpg') }}">
 
 

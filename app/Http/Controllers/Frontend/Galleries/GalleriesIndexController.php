@@ -1,7 +1,8 @@
 <?php
 
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\Frontend\Galleries;
 
+    use App\Http\Controllers\Controller;
     use App\Models\Gallery;
     use App\Services\Seo\Meta;
     use Illuminate\Support\Facades\Cache;

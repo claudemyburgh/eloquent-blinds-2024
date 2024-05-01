@@ -17,11 +17,13 @@
         {
             $categories = Category::live()->with('media', 'products.media', 'tags')->tree()->get()->toTree();
 
+
             return view('categories.index', data: [
                 'categories' => $categories,
                 'meta' => Meta::render([
                     'title' => 'Categories',
-                    'description' => 'Discover a world of stunning blinds as you explore our diverse product categories.'
+                    'description' => 'Discover a world of stunning blinds as you explore our diverse product categories.',
+                    'image' => $categories[rand(0, $categories->count() - 1)]->getFirstMediaUrl('default', 'meta-tag')
                 ])
             ]);
         }

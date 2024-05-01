@@ -21,7 +21,7 @@
                 'meta' => Meta::render([
                     'title' => $category->title,
                     'description' => $category->excerpt,
-                    'image' => $category->getFirstMediaUrl('default', 'card')
+                    'image' => $category->getFirstMediaUrl('default', 'meta-tag')
                 ])
             ]);
         }

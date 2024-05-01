@@ -19,7 +19,7 @@
                 'meta' => Meta::render([
                     'title' => $product->title,
                     'description' => $product->excerpt,
-                    'image' => $product->getFirstMediaUrl('default', 'card')
+                    'image' => $product->getFirstMediaUrl('default', 'meta-tag')
                 ])
             ]);
         }

@@ -7,7 +7,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Eloquent Blinds | {{ $meta['title']  }}">
 <meta property="og:description" content="{{ $meta['description'] }}">
-<meta property="og:image" content="{{ $meta['image'] ?? Vite::asset('resources/img/hero.webp')  }}">
+<meta property="og:image" content="{{ $meta['image'] ?? Vite::asset('resources/img/meta/eloquent.jpg')  }}">
 
 {{--  Twitter Meta Tags --}}
 <meta name="twitter:card" content="summary_large_image" />

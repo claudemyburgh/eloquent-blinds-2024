@@ -50,7 +50,6 @@
          */
         public function index(Request $request): Response
         {
-            //            dd($this->getResponse($request));
             return Inertia::render('Datatables/Index', $this->getResponse($request));
         }
 
@@ -60,7 +59,6 @@
         public function store(StoreProductRequest $request)
         {
             $product = Product::create($request->validated());
-
             return to_route('dashboard.products.edit', $product);
         }
 
@@ -110,7 +108,6 @@
                 $product->addMultipleMediaFromRequest(['image'])
                     ->each(function ($fileAdder) {
                         $fileAdder
-                            ->withResponsiveImages()
                             ->toMediaCollection('default');
                     });
             }

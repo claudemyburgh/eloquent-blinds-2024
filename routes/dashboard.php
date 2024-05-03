@@ -2,6 +2,7 @@
 
     use App\Http\Controllers\Dashboard\ActionsController;
     use App\Http\Controllers\Dashboard\DashboardIndexController;
+    use App\Http\Controllers\Datatables\AdsDatatableController;
     use App\Http\Controllers\Datatables\CategoriesDatatableController;
     use App\Http\Controllers\Datatables\ClientDatatableController;
     use App\Http\Controllers\Datatables\GalleriesDatatableController;
@@ -21,11 +22,13 @@
         Route::datatable('clients', ClientDatatableController::class);
         Route::datatable('galleries', GalleriesDatatableController::class);
         Route::datatable('variants', VariantsDatatableController::class);
+        Route::datatable('ads', AdsDatatableController::class);
 
         Route::post('categories/{category}/upload', [CategoriesDatatableController::class, 'upload'])->name('categories.upload');
         Route::post('products/{product}/upload', [ProductsDatatableController::class, 'upload'])->name('products.upload');
         Route::post('galleries/{gallery}/upload', [GalleriesDatatableController::class, 'upload'])->name('galleries.upload');
         Route::post('variants/{variant}/upload', [VariantsDatatableController::class, 'upload'])->name('variants.upload');
+        Route::post('ads/{ad}/upload', [AdsDatatableController::class, 'upload'])->name('ads.upload');
 
         // For all media deletion
         Route::delete('{media}', ImageDestroyController::class)->name('media.delete');

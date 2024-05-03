@@ -4,7 +4,6 @@ import { twMerge } from "tailwind-merge"
 import { ChartBarIcon, HomeIcon, RectangleStackIcon, SwatchIcon, PhotoIcon, UserIcon } from "@heroicons/react/24/solid"
 import lightLogo from "../../../../img/brand/light-long-logo.svg"
 import darkLogo from "../../../../img/brand/dark-long-logo.svg"
-import { ThemeSelector } from "@/dashboard/Components/Theme/ThemeSelector"
 
 const linkClasses = "flex items-center space-x-2 hover:bg-primary-500 focus:bg-primary-500 hover:text-primary-950 focus:text-primary-950 p-2 rounded"
 const activeLinkClass = "bg-primary-500 bg-primary-500 text-primary-950 text-primary-950"
@@ -50,9 +49,9 @@ function Navigation({ user }: any) {
             <SwatchIcon className="size-4" />
             <span>Variants</span>
           </Link>
-          <Link className={twMerge(linkClasses)} href={route("dashboard.index")}>
+          <Link className={twMerge(linkClasses)} href={route("dashboard.ads.index")}>
             <ChartBarIcon className="size-4" />
-            <span>Charts</span>
+            <span>Ads</span>
           </Link>
         </div>
       </div>

@@ -45,14 +45,26 @@
             return $this->belongsTo(Category::class);
         }
 
+        /**
+         * @return HasMany
+         */
         public function variants(): HasMany
         {
             return $this->hasMany(Variant::class);
         }
 
+
+        /**
+         * @return HasMany
+         */
+        public function ads(): HasMany
+        {
+            return $this->hasMany(Ad::class);
+        }
+
         public function registerMediaConversions(?Media $media = null): void
         {
-            foreach (config('image-conversion') as $key => $image) {
+            foreach (config('image-conversion.default') as $key => $image) {
                 $this->addMediaConversion($key)
                     ->format($image['format'])
                     ->blur($image['blur'])

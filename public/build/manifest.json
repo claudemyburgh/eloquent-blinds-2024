@@ -1,6 +1,6 @@
 {
-  "_AuthenticatedLayout-y5l3Sact.js": {
-    "file": "assets/AuthenticatedLayout-y5l3Sact.js",
+  "_AuthenticatedLayout-CfNrBeQi.js": {
+    "file": "assets/AuthenticatedLayout-CfNrBeQi.js",
     "name": "AuthenticatedLayout",
     "imports": [
       "_index.esm-DfKTBl1y.js",
@@ -119,8 +119,8 @@
     "file": "assets/bundle-mjs-Bq6clSCD.js",
     "name": "bundle-mjs"
   },
-  "_helpers-DDrnbA3y.js": {
-    "file": "assets/helpers-DDrnbA3y.js",
+  "_helpers-BaqXYIGa.js": {
+    "file": "assets/helpers-BaqXYIGa.js",
     "name": "helpers",
     "imports": [
       "_index.esm-DfKTBl1y.js"
@@ -191,7 +191,7 @@
     "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-DRoNqL4t.css",
+    "file": "assets/app-D6yg48Bv.css",
     "src": "resources/js/dashboard-app.tsx"
   },
   "resources/img/alu-blinds.webp": {
@@ -307,7 +307,7 @@
     "src": "resources/img/zebra-blinds.webp"
   },
   "resources/js/dashboard-app.tsx": {
-    "file": "assets/dashboard-app-BoMstge9.js",
+    "file": "assets/dashboard-app-iuQGimR0.js",
     "name": "dashboard-app",
     "src": "resources/js/dashboard-app.tsx",
     "isEntry": true,
@@ -321,6 +321,8 @@
       "resources/js/dashboard/Pages/Auth/Register.tsx",
       "resources/js/dashboard/Pages/Auth/ResetPassword.tsx",
       "resources/js/dashboard/Pages/Auth/VerifyEmail.tsx",
+      "resources/js/dashboard/Pages/Dashboard/Ads/Edit.tsx",
+      "resources/js/dashboard/Pages/Dashboard/Ads/Partials/EditAdForm.tsx",
       "resources/js/dashboard/Pages/Dashboard/Categories/Edit.tsx",
       "resources/js/dashboard/Pages/Dashboard/Categories/Partials/EditCategoryForm.tsx",
       "resources/js/dashboard/Pages/Dashboard/Galleries/Edit.tsx",
@@ -337,7 +339,7 @@
       "resources/js/dashboard/Pages/Profile/Partials/UpdateProfileInformationForm.tsx"
     ],
     "css": [
-      "assets/app-DRoNqL4t.css"
+      "assets/app-D6yg48Bv.css"
     ]
   },
   "resources/js/dashboard/Pages/Auth/ConfirmPassword.tsx": {
@@ -422,14 +424,61 @@
       "_bundle-mjs-Bq6clSCD.js"
     ]
   },
+  "resources/js/dashboard/Pages/Dashboard/Ads/Edit.tsx": {
+    "file": "assets/Edit-DAyFCkbw.js",
+    "name": "Edit",
+    "src": "resources/js/dashboard/Pages/Dashboard/Ads/Edit.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.esm-DfKTBl1y.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
+      "_toString-6yS-aJAO.js",
+      "_ImageDropzone-CB8PqRAa.js",
+      "resources/js/dashboard/Pages/Dashboard/Ads/Partials/EditAdForm.tsx",
+      "_helpers-BaqXYIGa.js",
+      "_bundle-mjs-Bq6clSCD.js",
+      "_index-B-0vEMHn.js",
+      "_open-closed-CdzG23jP.js",
+      "_keyboard-0I8HrQyk.js",
+      "_hidden-E73_kiKB.js",
+      "_use-resolve-button-type-DYSymLgj.js",
+      "_CharCounter-CDfEc41F.js",
+      "_TextInput-BBNg5xh3.js",
+      "_InputLabel-DbxdjfU3.js",
+      "_SaveSubmitButton-vLC3uGb3.js",
+      "_PrimaryButton-CxXZdd90.js",
+      "_transition-DhRkQv_C.js",
+      "_ToastItem-Di5V-yUc.js"
+    ]
+  },
+  "resources/js/dashboard/Pages/Dashboard/Ads/Partials/EditAdForm.tsx": {
+    "file": "assets/EditAdForm-vODIF2bl.js",
+    "name": "EditAdForm",
+    "src": "resources/js/dashboard/Pages/Dashboard/Ads/Partials/EditAdForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index.esm-DfKTBl1y.js",
+      "_CharCounter-CDfEc41F.js",
+      "_TextInput-BBNg5xh3.js",
+      "_InputLabel-DbxdjfU3.js",
+      "_SaveSubmitButton-vLC3uGb3.js",
+      "_index-B-0vEMHn.js",
+      "_ToastItem-Di5V-yUc.js",
+      "_helpers-BaqXYIGa.js",
+      "_bundle-mjs-Bq6clSCD.js",
+      "_PrimaryButton-CxXZdd90.js",
+      "_transition-DhRkQv_C.js",
+      "_open-closed-CdzG23jP.js"
+    ]
+  },
   "resources/js/dashboard/Pages/Dashboard/Categories/Edit.tsx": {
-    "file": "assets/Edit-YM8FGiuj.js",
+    "file": "assets/Edit-B0CAdH5e.js",
     "name": "Edit",
     "src": "resources/js/dashboard/Pages/Dashboard/Categories/Edit.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_index.esm-DfKTBl1y.js",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "resources/js/dashboard/Pages/Dashboard/Categories/Partials/EditCategoryForm.tsx",
       "_toString-6yS-aJAO.js",
       "_ImageDropzone-CB8PqRAa.js",
@@ -445,12 +494,12 @@
       "_SaveSubmitButton-vLC3uGb3.js",
       "_PrimaryButton-CxXZdd90.js",
       "_transition-DhRkQv_C.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_ToastItem-Di5V-yUc.js"
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Categories/Partials/EditCategoryForm.tsx": {
-    "file": "assets/EditCategoryForm-Civy2lnq.js",
+    "file": "assets/EditCategoryForm-pva4WsIx.js",
     "name": "EditCategoryForm",
     "src": "resources/js/dashboard/Pages/Dashboard/Categories/Partials/EditCategoryForm.tsx",
     "isDynamicEntry": true,
@@ -460,7 +509,7 @@
       "_TextInput-BBNg5xh3.js",
       "_InputLabel-DbxdjfU3.js",
       "_SaveSubmitButton-vLC3uGb3.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_index-B-0vEMHn.js",
       "_ToastItem-Di5V-yUc.js",
       "_bundle-mjs-Bq6clSCD.js",
@@ -470,13 +519,13 @@
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Galleries/Edit.tsx": {
-    "file": "assets/Edit-CVwtMdvs.js",
+    "file": "assets/Edit-DZ3b0NQe.js",
     "name": "Edit",
     "src": "resources/js/dashboard/Pages/Dashboard/Galleries/Edit.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_index.esm-DfKTBl1y.js",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "resources/js/dashboard/Pages/Dashboard/Galleries/Partials/EditGalleryForm.tsx",
       "_toString-6yS-aJAO.js",
       "_ImageDropzone-CB8PqRAa.js",
@@ -492,12 +541,12 @@
       "_SaveSubmitButton-vLC3uGb3.js",
       "_PrimaryButton-CxXZdd90.js",
       "_transition-DhRkQv_C.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_ToastItem-Di5V-yUc.js"
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Galleries/Partials/EditGalleryForm.tsx": {
-    "file": "assets/EditGalleryForm-DP8yTsnb.js",
+    "file": "assets/EditGalleryForm-Cb3Wefzo.js",
     "name": "EditGalleryForm",
     "src": "resources/js/dashboard/Pages/Dashboard/Galleries/Partials/EditGalleryForm.tsx",
     "isDynamicEntry": true,
@@ -507,7 +556,7 @@
       "_TextInput-BBNg5xh3.js",
       "_InputLabel-DbxdjfU3.js",
       "_SaveSubmitButton-vLC3uGb3.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_index-B-0vEMHn.js",
       "_ToastItem-Di5V-yUc.js",
       "_bundle-mjs-Bq6clSCD.js",
@@ -517,13 +566,13 @@
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Index.tsx": {
-    "file": "assets/Index-a8Ea4gLa.js",
+    "file": "assets/Index-E2_HNszc.js",
     "name": "Index",
     "src": "resources/js/dashboard/Pages/Dashboard/Index.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_index.esm-DfKTBl1y.js",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "_Panel-6fZhvHmk.js",
       "_bundle-mjs-Bq6clSCD.js",
       "_index-B-0vEMHn.js",
@@ -534,13 +583,13 @@
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Products/Edit.tsx": {
-    "file": "assets/Edit-BPCyjenr.js",
+    "file": "assets/Edit-DD2m3qUX.js",
     "name": "Edit",
     "src": "resources/js/dashboard/Pages/Dashboard/Products/Edit.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_index.esm-DfKTBl1y.js",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "resources/js/dashboard/Pages/Dashboard/Products/Partials/EditProductForm.tsx",
       "_toString-6yS-aJAO.js",
       "_ImageDropzone-CB8PqRAa.js",
@@ -556,13 +605,13 @@
       "_SaveSubmitButton-vLC3uGb3.js",
       "_PrimaryButton-CxXZdd90.js",
       "_transition-DhRkQv_C.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_SelectStepCategory-DUdJ3H3r.js",
       "_ToastItem-Di5V-yUc.js"
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Products/Partials/EditProductForm.tsx": {
-    "file": "assets/EditProductForm-DGYzq4VW.js",
+    "file": "assets/EditProductForm-CyhNqj3c.js",
     "name": "EditProductForm",
     "src": "resources/js/dashboard/Pages/Dashboard/Products/Partials/EditProductForm.tsx",
     "isDynamicEntry": true,
@@ -572,7 +621,7 @@
       "_TextInput-BBNg5xh3.js",
       "_InputLabel-DbxdjfU3.js",
       "_SaveSubmitButton-vLC3uGb3.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_index-B-0vEMHn.js",
       "_SelectStepCategory-DUdJ3H3r.js",
       "_ToastItem-Di5V-yUc.js",
@@ -585,13 +634,13 @@
     ]
   },
   "resources/js/dashboard/Pages/Dashboard/Variants/Edit.tsx": {
-    "file": "assets/Edit-DcfBcULQ.js",
+    "file": "assets/Edit-DHmrGTKO.js",
     "name": "Edit",
     "src": "resources/js/dashboard/Pages/Dashboard/Variants/Edit.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_index.esm-DfKTBl1y.js",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "_toString-6yS-aJAO.js",
       "_ImageDropzone-CB8PqRAa.js",
       "resources/js/dashboard/Pages/Dashboard/Variants/Partials/EditVariantForm.tsx",
@@ -628,17 +677,17 @@
     ]
   },
   "resources/js/dashboard/Pages/Datatables/Index.tsx": {
-    "file": "assets/Index-B5cYUjGa.js",
+    "file": "assets/Index-BvSxrhXk.js",
     "name": "Index",
     "src": "resources/js/dashboard/Pages/Datatables/Index.tsx",
     "isDynamicEntry": true,
     "imports": [
       "_index.esm-DfKTBl1y.js",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "_toString-6yS-aJAO.js",
       "_Modal-CRCnDuiW.js",
       "_PrimaryButton-CxXZdd90.js",
-      "_helpers-DDrnbA3y.js",
+      "_helpers-BaqXYIGa.js",
       "_index-B-0vEMHn.js",
       "_ToastItem-Di5V-yUc.js",
       "_TextInput-BBNg5xh3.js",
@@ -656,7 +705,7 @@
     ]
   },
   "resources/js/dashboard/Pages/Profile/Edit.tsx": {
-    "file": "assets/Edit-DFDjrSWW.js",
+    "file": "assets/Edit-Blj6tCRX.js",
     "name": "Edit",
     "src": "resources/js/dashboard/Pages/Profile/Edit.tsx",
     "isDynamicEntry": true,
@@ -665,7 +714,7 @@
       "resources/js/dashboard/Pages/Profile/Partials/DeleteUserForm.tsx",
       "resources/js/dashboard/Pages/Profile/Partials/UpdatePasswordForm.tsx",
       "resources/js/dashboard/Pages/Profile/Partials/UpdateProfileInformationForm.tsx",
-      "_AuthenticatedLayout-y5l3Sact.js",
+      "_AuthenticatedLayout-CfNrBeQi.js",
       "_Modal-CRCnDuiW.js",
       "_bundle-mjs-Bq6clSCD.js",
       "_open-closed-CdzG23jP.js",

@@ -1,12 +1,7 @@
 import { PageProps } from "@/types"
 import AuthenticatedLayout from "@/dashboard/Layouts/AuthenticatedLayout"
-import { Head, Link } from "@inertiajs/react"
-import States from "@/dashboard/Layouts/Partials/States"
+import { Head } from "@inertiajs/react"
 import React from "react"
-import { Panel } from "@/dashboard/Components/Panel"
-import { formatDistanceToNow } from "date-fns"
-import MultiSelect from "@/Shared/Components/FormParials/MultiSelect"
-import convertForSelect from "@/lib/convertForSelect"
 import ClientList from "@/dashboard/Layouts/Partials/ClientList"
 
 export default function Index({ auth, clients, tags }: PageProps<any>) {

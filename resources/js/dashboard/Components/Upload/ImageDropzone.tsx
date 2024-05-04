@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { ImageProps, ProgressProps } from "@/types/datatable"
-import { ProgressBar, UploadCard } from "@/dashboard/Components/Upload/index"
+import { UploadCard } from "@/dashboard/Components/Upload/index"
 import { router } from "@inertiajs/react"
 import uuid from "lodash/uniqueId"
 import { CloudArrowUpIcon } from "@heroicons/react/24/solid"
@@ -155,10 +155,12 @@ function ImageDropzone({ model, namedRoute }: ImageProps) {
         )}
 
         {model?.media && (
-          <div className={`grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8 `}>
-            {model.media.map((image: any) => (
-              <UploadCard key={image.uuid} file={image} />
-            ))}
+          <div className={`@container`}>
+            <div className={`grid grid-cols-1 gap-4  @lg:grid-cols-2 @lg:gap-6 @xl:grid-cols-3 @xl:gap-8 `}>
+              {model.media.map((image: any) => (
+                <UploadCard key={image.uuid} file={image} />
+              ))}
+            </div>
           </div>
         )}
       </div>

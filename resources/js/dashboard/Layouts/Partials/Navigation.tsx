@@ -53,6 +53,10 @@ function Navigation({ user }: any) {
             <ChartBarIcon className="size-4" />
             <span>Ads</span>
           </Link>
+          <Link className={twMerge(linkClasses)} href={route("dashboard.meta-tag.index")}>
+            <ChartBarIcon className="size-4" />
+            <span>Meta Tags</span>
+          </Link>
         </div>
       </div>
 

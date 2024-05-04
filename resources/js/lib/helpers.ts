@@ -17,6 +17,21 @@ export function fullUrl(url: string): string {
   return `${import.meta.env.APP_URL}/${url}`
 }
 
+export function excerpt(text: string, maxLength: number, excerptIndicator: string = "..."): string {
+  if (text.length <= maxLength) {
+    return text
+  }
+
+  let excerptText = text.substring(0, maxLength)
+  const lastSpaceIndex = excerptText.lastIndexOf(" ")
+
+  if (lastSpaceIndex !== -1) {
+    excerptText = excerptText.substring(0, lastSpaceIndex)
+  }
+
+  return `${excerptText}${excerptIndicator}`
+}
+
 export function bytesFormat(value: number): string {
   let units: string[] = ["B", "KB", "MB", "GB", "TB"]
   let bytes: number = value
@@ -34,7 +49,7 @@ export function classNames(...classes: string[]) {
 
 export function convertedImage(
   url: string,
-  type?: "tiny" | "thumb" | "small" | "medium" | "large" | "tail" | "card" | "screen" | "ads",
+  type?: "tiny" | "thumb" | "small" | "medium" | "large" | "tail" | "card" | "screen" | "ads" | "meta-tags",
   extension: string = "webp",
   fallbackImageUrl: string = "/img/placeholder.webp"
 ) {

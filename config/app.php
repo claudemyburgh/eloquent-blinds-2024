@@ -17,6 +17,8 @@ return [
 
     'placeholder' => 'https://fakeimg.pl/800x800',
 
+    'placeholder_meta_image' => 'https://fakeimg.pl/600x600',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -123,6 +125,6 @@ return [
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
-    ],
+        ],
 
 ];

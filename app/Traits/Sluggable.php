@@ -14,7 +14,6 @@ trait Sluggable
         static::creating(function (Model $model): void {
 
             $model->uuid = Str::uuid()->toString();
-
             if (! $model->slug) {
                 $model->slug = $model->uuid;
             }

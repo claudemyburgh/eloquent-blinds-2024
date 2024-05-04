@@ -7,12 +7,13 @@ use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
 it('has frontend routes', function ($route) {
+    $cat = Category::factory()->create([
+        'title' => 'Shutter',
+        'slug' => 'shutter',
+    ]);
+
     if ($route === 'categories.show') {
-        $cat = Category::factory()->create([
-            'title' => 'Shutter',
-            'slug' => 'shutter',
-        ]);
-        get(route($route, 'shutter'))->assertOk();
+        get(route($route, $cat))->assertOk();
     } else {
         get(route($route))->assertOk();
     }

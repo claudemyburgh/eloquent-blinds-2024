@@ -59,6 +59,7 @@ export default {
       },
       aspectRatio: {
         "4/3": "4 / 3",
+        facebook: "40 / 21",
       },
     },
   },

@@ -3,9 +3,10 @@
 dataset('routes', function () {
     return [
         'home',
-        'categories.index',
         'categories.show',
+        'categories.index',
         'galleries.index',
+        //            'products.show',
         'legal.privacy-policy',
         'legal.warrants',
         'quote.index',

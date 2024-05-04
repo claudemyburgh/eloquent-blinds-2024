@@ -44,6 +44,12 @@
                 'height' => 1600,
                 'blur' => 0,
             ],
+            'meta-tag' => [
+                'format' => 'webp',
+                'width' => 1080,
+                'height' => 1350,
+                'blur' => 0,
+            ]
         ],
         'ads' => [
             'format' => 'webp',

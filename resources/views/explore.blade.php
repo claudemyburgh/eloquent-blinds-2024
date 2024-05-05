@@ -17,37 +17,34 @@
             <x-facebook.card :$tag />
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            @foreach($categories as $category)
-                <div class="space-y-4">
-                    <h4 class="heading-4">{{$category->title}}</h4>
-                    <ul class="list-disc list-inside space-y-2">
-                        @if($category->products->count())
-                            @foreach($category->products as $product)
-                                <li><a class="hover-underline text-primary-500" href="{{ route('products.show', [$category, $product]) }}">{{ $product->title }}</a></li>
-                            @endforeach
-                        @elseif($category->children->count())
-                            @foreach($category->children as $child)
-                                <li class="space-y-2">
-                                    <a class="hover-underline text-primary-500" href="{{ route('categories.show', [$category]) }}">{{ $child->title }}</a>
-                                    @if ($child->products->count())
-                                        <ul class="list-disc list-inside ml-4 space-y-2">
-                                            @foreach($child->products as $product)
-                                                <li><a class="hover-underline text-primary-500" href="{{ route('products.show', [$child, $product]) }}">{{ $product->title }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    @endif
-                                </li>
-                            @endforeach
-                        @endif
-                    </ul>
-                </div>
-            @endforeach
-
-
-        </div>
     </div>
+    <x-marquee.ticker class="my-12">
+        @foreach($categories_with_all as $category)
+            <a rel="preload" href="{{ route('categories.show', $category) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+                {{$category->title}}
+            </a>
+            @if($category->products->count())
+                @foreach($category->products as $product)
+                    <a rel="preload" href="{{ route('products.show', [$category, $product]) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+                        {{$product->title}}
+                    </a>
+                @endforeach
+            @else
+                @foreach($category->children as $child)
+                    <a rel="preload" href="{{ route('categories.show', $child) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+                        {{$child->title}}
+                    </a>
+                    @foreach($child->products as $product)
+                        <a rel="preload" href="{{ route('products.show', [$child, $product]) }}" class="hover-underline splide__slide inline-block px-4 py-2 transition-colors hover:bg-primary-500/10 rounded-global shrink-0">
+                            {{$product->title}}
+                        </a>
+                    @endforeach
+                @endforeach
+            @endif
 
+        @endforeach
+
+    </x-marquee.ticker>
 
 </x-app-layout>

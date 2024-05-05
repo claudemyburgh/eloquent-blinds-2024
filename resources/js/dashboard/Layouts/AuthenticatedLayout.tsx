@@ -4,6 +4,8 @@ import Navigation from "@/dashboard/Layouts/Partials/Navigation"
 import { Toaster } from "react-hot-toast"
 import { ThemeSelector } from "@/dashboard/Components/Theme/ThemeSelector"
 import ActionBar from "@/dashboard/ActionBar"
+import { Dropdown } from "@/Shared/Components/FormParials"
+import ProfileMenu from "@/dashboard/Layouts/Partials/ProfileMenu"
 
 export default function Authenticated({ user, header, children }: PropsWithChildren<{ user: User; header?: ReactNode }>) {
   return (
@@ -17,6 +19,7 @@ export default function Authenticated({ user, header, children }: PropsWithChild
               <div className={`flex space-x-4`}>
                 <ActionBar />
                 <ThemeSelector className="relative z-10" />
+                <ProfileMenu />
               </div>
             </div>
           </header>

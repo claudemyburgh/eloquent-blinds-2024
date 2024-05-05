@@ -55,6 +55,11 @@ const ActionBar = () => {
             </>
           </Link>
         </Menu.Item>
+        <Menu.Item as="div" className={`w-full `}>
+          <Link className={`btn btn-secondary`} href={`https://www.google.com/ping?sitemap=https://eloquentblinds.co.za/sitemap.xml`} method="post" as={`button`} type={`button`}>
+            Ping Google Sitemap
+          </Link>
+        </Menu.Item>
       </Menu.Items>
     </Menu>
   )

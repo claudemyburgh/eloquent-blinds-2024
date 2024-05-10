@@ -35,7 +35,7 @@
                 'slug' => 'reviews',
                 'route' => 'reviews.index',
                 'classes' => 'hover:text-primary-500 dark:text-shadow ',
-                'show' => true,
+                'show' => false,
             ],
             (object)[
                 'name' => 'Gallery',

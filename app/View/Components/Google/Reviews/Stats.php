@@ -11,7 +11,7 @@
         /**
          * Create a new component instance.
          */
-        public function __construct(public $reviews, public $count = null, public $ratingCount = null, public $averageRating = null)
+        public function __construct(public $reviews, public $ratingCount = null, public $averageRating = null)
         {
         }
 

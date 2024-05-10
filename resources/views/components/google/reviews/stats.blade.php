@@ -13,7 +13,7 @@
                 </div>
                 <p class="sr-only">{{$averageRating}} out of 5 stars</p>
             </div>
-            <p class="ml-2 text-sm text-gray-800 dark:text-gray-100">Based on {{ $count }} reviews</p>
+            <p class="ml-2 text-sm text-gray-800 dark:text-gray-100">Based on {{ $ratingCount }} reviews</p>
         </div>
 
         <div class="mt-6">
@@ -32,13 +32,13 @@
 
                                 <div class="ml-3 relative flex-1 overflow-hidden rounded-full">
                                     <div class="h-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-950 rounded-full"></div>
-                                    <div style="width: {{ number_format($ratingCount->get($star, 0) / $count * 100, 2) }}%"
+                                    <div style="width: {{ floatval(number_format(collect($reviews)->groupBy('rating')->map(fn($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1) )}}%"
                                          class="absolute inset-y-0 bg-amber-400 border border-amber-400 rounded-full -ml-0.5"></div>
                                 </div>
                             </div>
                         </dt>
                         <dd class="ml-3 w-10 text-right tabular-nums text-sm text-gray-900">
-                            {{ number_format($ratingCount->get($star, 0) / $count * 100, 2) }}%
+                            {{ floatval(number_format(collect($reviews)->groupBy('rating')->map(fn($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1) )}}%
                         </dd>
                     </div>
                 @endfor
@@ -48,7 +48,8 @@
         <div class="mt-10">
             <h3 class="text-lg font-medium  text-gray-800 dark:text-gray-100">Share your thoughts</h3>
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">If you’ve used this product, share your thoughts with other customers</p>
-            <a href="#" class="mt-6 inline-flex w-full bg-white dark:bg-transparent border border-gray-300 dark:border-gray-200 rounded-md py-2 px-8 items-center justify-center text-sm font-medium  text-gray-800 dark:text-gray-100
+            <a target="_blank" href="https://g.page/r/CXWNSZcI_nGmEAI/review" class="mt-6 inline-flex w-full bg-white dark:bg-transparent border border-gray-300 dark:border-gray-200 rounded-md py-2 px-8 items-center justify-center text-sm font-medium
+            text-gray-800 dark:text-gray-100
             hover:bg-gray-50 dark:hover:bg-gray-700 sm:w-auto
             lg:w-full">Write a review</a>
         </div>

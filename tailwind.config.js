@@ -42,6 +42,7 @@ export default {
         hard: ["0 3px 3px rgba(0, 0, 0, 0.5)", "0 6px 6px rgba(0, 0, 0, 0.25)"],
       },
       animation: {
+        "spin-slow": "spin 13s linear infinite",
         "slide-slow": "slide-x 3s ease-in-out infinite",
         slide: "slide-x 2s ease-in-out infinite",
         "slide-fast": "slide-x 1s ease-in-out infinite",

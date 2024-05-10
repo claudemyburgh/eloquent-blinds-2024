@@ -4,9 +4,9 @@
 
     use App\Http\Controllers\Controller;
     use App\Services\Seo\Meta;
-    use Exception;
-    use GuzzleHttp\Client;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Cache;
+    use Illuminate\Support\Facades\Http;
 
     class ReviewsIndexController extends Controller
     {
@@ -24,21 +24,26 @@
         public function __invoke(Request $request)
         {
 
-            $client = new Client();
-            $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id={$this->googleMapsPlaceId}&key={$this->googleMapsApiKey}";
+            $data = Cache::remember('reviews', 60 * 60 * 12, function () {
+                return Http::get('https://maps.googleapis.com/maps/api/place/details/json', [
+                    'place_id' => $this->googleMapsPlaceId,
+                    'key' => $this->googleMapsApiKey,
+                    'fields' => 'user_ratings_total,rating,reviews,opening_hours,current_opening_hours',
+                ])->json();
+            });
 
-            try {
-                $response = $client->get($url);
-                $data = json_decode($response->getBody()->getContents(), true);
+            // author_name
+            // author_url
+            // language
+            // rating
+            // relative_time_description
+            // time
+            // profile_photo_url
+            // user_ratings_total
 
-                $reviews = $data['result']['reviews'];
-
-                return response()->json($reviews);
-            } catch (Exception $e) {
-                return response()->json(['error' => 'Failed to fetch reviews'], 500);
-            }
 
             return view('reviews.index', [
+                'data' => $data['result'],
                 'meta' => Meta::render([
                     'title' => 'Reviews',
                     'description' => 'Hear what our clients have to say about our shutter, blinds and service',

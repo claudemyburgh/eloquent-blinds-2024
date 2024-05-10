@@ -2,9 +2,7 @@
     <x-slot name="seo">
         <x-seo-meta :$meta />
     </x-slot>
-
     <section class="space-y-16 py-16 lg:py-32 z-10 wrapper">
-
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 dark:border-gray-800 relative">
             <div class="relative">
                 <div class="md:sticky md:top-32  space-y-6">
@@ -14,15 +12,10 @@
             </div>
             <div>
                 <x-product.details :$product />
-
                 <div id="quote-form" data-product="{{ $product->title }}"></div>
             </div>
-
-
         </div>
         <x-shutters-comparison />
         <x-gallery.section :model="$product" />
     </section>
-
-
 </x-app-layout>

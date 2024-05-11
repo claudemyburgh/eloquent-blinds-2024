@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                         </dt>
-                        <dd class="ml-3 w-10 text-right tabular-nums text-sm text-gray-900">
+                        <dd class="ml-3 w-10 text-right tabular-nums text-sm text-gray-900 dark:text-gray-300">
                             {{ floatval(number_format(collect($reviews)->groupBy('rating')->map(fn($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1) )}}%
                         </dd>
                     </div>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="mt-10">
-            <h3 class="text-lg font-medium  text-gray-800 dark:text-gray-100">Share your thoughts</h3>
+            <h3 class="text-lg font-medium text-gray-800 dark:text-gray-100">Share your thoughts</h3>
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">If you’ve used this product, share your thoughts with other customers</p>
             <a target="_blank" href="https://g.page/r/CXWNSZcI_nGmEAI/review" class="mt-6 inline-flex w-full bg-white dark:bg-transparent border border-gray-300 dark:border-gray-200 rounded-md py-2 px-8 items-center justify-center text-sm font-medium
             text-gray-800 dark:text-gray-100

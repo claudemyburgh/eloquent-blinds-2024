@@ -1,5 +1,4 @@
 <mouse-spotlight class="p-4 md:p-6 row-span-2 space-y-4 rounded-lg dark:bg-gray-900 bg-gray-50 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-800">
-
     <div class="lg:col-span-4">
         <img height="40" class="h-[40px]" src="{{ Vite::asset('resources/img/google-logo.svg') }}" alt="Google logo">
     </div>
@@ -21,6 +20,13 @@
 
             <dl class="space-y-3">
                 @for($star = 5; $star >= 1; $star--)
+                    @php
+                        $pre = number_format(collect($reviews)->groupBy('rating')->map(fn($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1) <  100 ? number_format(collect($reviews)->groupBy('rating')->map(fn
+                        ($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1): 100;
+
+                    @endphp
+
+
                     <div class="flex items-center text-sm">
                         <dt class="flex-1 flex items-center">
                             <p class="w-3 font-medium text-gray-800 dark:text-gray-100">{{$star}}<span class="sr-only"> star reviews</span></p>
@@ -32,13 +38,13 @@
 
                                 <div class="ml-3 relative flex-1 overflow-hidden rounded-full">
                                     <div class="h-3 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-950 rounded-full"></div>
-                                    <div style="width: {{ floatval(number_format(collect($reviews)->groupBy('rating')->map(fn($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1) )}}%"
+                                    <div style="width: {{ floatval($pre) }}%"
                                          class="absolute inset-y-0 bg-amber-400 border border-amber-400 rounded-full -ml-0.5"></div>
                                 </div>
                             </div>
                         </dt>
                         <dd class="ml-3 w-10 text-right tabular-nums text-sm text-gray-900 dark:text-gray-300">
-                            {{ floatval(number_format(collect($reviews)->groupBy('rating')->map(fn($reviews) => $reviews->count())->get($star, 0)  / $averageRating * 100 , 1) )}}%
+                            {{ floatval($pre) }}%
                         </dd>
                     </div>
                 @endfor

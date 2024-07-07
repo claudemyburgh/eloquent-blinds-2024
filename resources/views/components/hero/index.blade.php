@@ -45,7 +45,7 @@
                     </span>
                     </a>
                 </div>
-                <x-svg.tylor />
+                {{--                <x-svg.tylor />--}}
 
             </div>
 
